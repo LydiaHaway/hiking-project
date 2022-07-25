@@ -1,19 +1,22 @@
 <?php
 
-function getHikes()
+function getHikes() 
 {
+
     try {
+
         $database = new PDO(
-            'mysql: host = localhost; dbname = jepsen6-psr; chartset = utf8 ',
+            'mysql:host=188.166.24.55;dbname=jepsen6-psr;chartset=utf8',
             'psr',
             'w3Gk7HhlpZnRiwJL'
         );
-    } catch (Exception $e) {
-        die('erreur:' . $e->getMessage());
+
+    } catch (PDOException $e) {
+        die('Erreur: ' .$e->getMessage());
     }
 
     $statement = $database->query(
-        'SELECT * FROM hikes ORDER BY location ASC'
+        "SELECT * FROM hikes"
     );
 
     $hikes = [];
@@ -35,3 +38,4 @@ function getHikes()
 
     return $hikes;
 }
+
