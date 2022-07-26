@@ -19,7 +19,7 @@
         foreach ($hikes as $hike) {
         ?>
             <div class="hikes">
-                <a href="">
+                <a href="hike?<?php echo htmlspecialchars($hike['name']); ?>">
                     <h3>
                         <?php echo htmlspecialchars($hike['name']); ?>
                         <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
