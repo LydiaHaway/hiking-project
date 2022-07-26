@@ -3,6 +3,7 @@
 $routes = [
 
     'GET' => [
+        '/' => '../view/homepage.php',
         '/home' => '../view/homepage.php',
     ],
 

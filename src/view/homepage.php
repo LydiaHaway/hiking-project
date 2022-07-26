@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Hikes</h1>
+    <h1>Hikes Challenge</h1>
 
     <?php
     require_once '../controller/database_controller.php';
@@ -18,13 +18,14 @@
         <div class="hikes">
             <h3>
                 <?php echo htmlspecialchars($hike['name']); ?>
-                <em>le <?php echo $hike['date']; ?></em>
+                <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
             </h3>
             <p>
-                <?php
-                echo nl2br(htmlspecialchars($hike['description']));
-                ?>
-                <br />
+                Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+            </p>
+            <p>
+                Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
             </p>
         </div>
     <?php
