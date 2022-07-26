@@ -1,6 +1,6 @@
 <?php
 
-function getHikes() 
+function getHikes()
 {
 
     try {
@@ -10,9 +10,8 @@ function getHikes()
             'psr',
             'w3Gk7HhlpZnRiwJL'
         );
-
     } catch (PDOException $e) {
-        die('Erreur: ' .$e->getMessage());
+        die('Erreur: ' . $e->getMessage());
     }
 
     $statement = $database->query(
@@ -38,4 +37,3 @@ function getHikes()
 
     return $hikes;
 }
-
