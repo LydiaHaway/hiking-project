@@ -16,10 +16,13 @@
     foreach ($hikes as $hike) {
     ?>
         <div class="hikes">
-            <h3>
-                <?php echo htmlspecialchars($hike['name']); ?>
-                <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
-            </h3>
+            <a href="">
+                <h3>
+                    <?php echo htmlspecialchars($hike['name']); ?>
+                    <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
+                </h3>
+            </a>
+
             <p>
                 Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
                 durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
