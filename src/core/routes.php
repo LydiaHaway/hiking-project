@@ -3,9 +3,9 @@
 $routes = [
 
     'GET' => [
-        '/' => '../view/homepage.php',
-        '/home' => '../view/homepage.php',
-        '/hike' => './view/hike.php',
+        '/' => '../controller/homepage_controller.php',
+        '/home' => '../controller/homepage_controller.php',
+        '/hike' => './controller/hike.php',
     ],
 
     'POST' => [],

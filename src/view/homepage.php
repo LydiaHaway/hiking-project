@@ -15,8 +15,7 @@
         <h1>Hikes Challenge</h1>
 
         <?php
-        require_once '../controller/database_controller.php';
-        foreach ($hikes as $hike) {
+        foreach ($hikes->getHikes() as $key => $hike) {
         ?>
             <div class="hikes">
                 <a href="hike?<?php echo htmlspecialchars($hike['name']); ?>">
