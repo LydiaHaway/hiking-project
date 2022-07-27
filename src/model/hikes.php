@@ -81,4 +81,66 @@ class Hikes extends Database
     }
 
     // To display Tags
+
+    public function getTag(int $id)
+    {
+
+        $id;
+
+        $db = $this->connectDb();
+
+        $req = $db->prepare('SELECT *
+        FROM tags
+        WHERE id= :id');
+
+
+        $req->bindValue(':id', $id);
+
+        $req->execute();
+
+        $tags = [];
+
+        while (($row = $req->fetch())) {
+            $tag = [
+                'ID' => $row['ID'],
+                'name' => $row['name'],
+            ];
+
+            $tags[] = $tag;
+        }
+
+        return $tags;
+    }
+
+    public function getUser(int $id)
+    {
+
+        $id;
+
+        $db = $this->connectDb();
+
+        $req = $db->prepare('SELECT *
+        FROM users
+        WHERE id= :id');
+
+
+        $req->bindValue(':id', $id);
+
+        $req->execute();
+
+        $users = [];
+
+        while (($row = $req->fetch())) {
+            $user = [
+                'ID' => $row['ID'],
+                'firstname' => $row['firstname'],
+                'lastname' => $row['lastname'],
+                'nickname' => $row['nickname'],
+            ];
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
 }
