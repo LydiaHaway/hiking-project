@@ -112,6 +112,8 @@ class Hikes extends Database
         return $tags;
     }
 
+    // To display User
+
     public function getUser(int $id)
     {
 
