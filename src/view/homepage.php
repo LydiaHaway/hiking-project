@@ -19,7 +19,7 @@
         foreach ($hikes->getHikes() as $key => $hike) {
         ?>
             <div class="hikes">
-                <a href="hike?<?php echo htmlspecialchars($hike['name']); ?>">
+                <a href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                     <h3>
                         <?php echo htmlspecialchars($hike['name']); ?>
                         <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
