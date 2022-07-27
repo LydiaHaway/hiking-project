@@ -70,6 +70,8 @@ class Hikes extends Database
                 'description' => $row['description'],
                 'location' => $row['location'],
                 'update' => $row['update'],
+                'ID_tags' => $row['ID_tags'],
+                'ID_user' => $row['ID_user'],
             ];
 
             $hikes[] = $hike;
@@ -77,4 +79,6 @@ class Hikes extends Database
 
         return $hikes;
     }
+
+    // To display Tags
 }

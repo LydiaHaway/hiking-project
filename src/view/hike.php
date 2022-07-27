@@ -32,9 +32,14 @@
                 <p class="description">
                     <?php echo htmlspecialchars($hike['description']); ?>
                 </p>
+
                 <p class="location">
                     Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
                 </p>
+
+                <a class="button" href="home">
+                    <button>Home</button>
+                </a>
             </div>
         <?php
         }
