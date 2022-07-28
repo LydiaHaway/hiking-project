@@ -10,6 +10,10 @@
 
 <body>
 
+    <?php require 'include/header.php'
+
+    ?>
+
     <main>
 
         <?php
@@ -62,6 +66,10 @@
 
 
     </main>
+
+    <?php require 'include/footer.php'
+
+    ?>
 
 </body>
 

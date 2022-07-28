@@ -11,9 +11,11 @@
 
 <body>
 
-    <main>
+    <?php require 'include/header.php'
 
-        <h1>Hikes Challenge</h1>
+    ?>
+
+    <main>
 
         <?php
         foreach ($hikes->getHikes() as $key => $hike) {
@@ -61,7 +63,9 @@
 
     </main>
 
+    <?php require 'include/footer.php'
 
+    ?>
 
 
 </body>
