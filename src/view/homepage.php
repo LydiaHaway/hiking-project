@@ -11,7 +11,7 @@
 
 <body>
 
-    <?php require 'include/header.php'
+    <?php require_once 'include/header.php'
 
     ?>
 
@@ -27,6 +27,17 @@
                     <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
                 </h3>
 
+                <?php
+                foreach ($users->getUser($hike['ID_user']) as $key => $user) {
+                ?>
+
+                    <p class="user"> Par <?php echo htmlspecialchars($user['nickname']); ?>
+                    </p>
+
+                <?php
+                }
+                ?>
+
                 <p class="info">
                     Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
                     durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
@@ -35,6 +46,17 @@
                 <p class="location">
                     Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
                 </p>
+
+                <?php
+                foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
+                ?>
+
+                    <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
+                    </p>
+
+                <?php
+                }
+                ?>
 
                 <a class="button" href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                     <button>Plus d'info</button>
@@ -63,7 +85,7 @@
 
     </main>
 
-    <?php require 'include/footer.php'
+    <?php require_once 'include/footer.php'
 
     ?>
 

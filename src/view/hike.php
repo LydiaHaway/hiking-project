@@ -10,7 +10,7 @@
 
 <body>
 
-    <?php require 'include/header.php'
+    <?php require_once 'include/header.php'
 
     ?>
 
@@ -72,7 +72,7 @@
         ?>
     </main>
 
-    <?php require 'include/footer.php'
+    <?php require_once 'include/footer.php'
 
     ?>
 
