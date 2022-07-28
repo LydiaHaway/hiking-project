@@ -79,7 +79,49 @@ class Hikes extends Database
 
         return $hikesID;
     }
- 
+
+    // to display hikes by tags 
+
+    public function getHikeByTag(int $id)
+    {
+
+        $id;
+
+        $id = $_GET["id"];
+
+        $db = $this->connectDb();
+
+        $req = $db->prepare('SELECT *
+         FROM hikes
+         WHERE ID_tags= :id');
+
+
+        $req->bindValue(':id', $id);
+
+        $req->execute();
+
+        $hikes = [];
+
+        while (($row = $req->fetch())) {
+            $hike = [
+                'ID' => $row['ID'],
+                'name' => $row['name'],
+                'date' => $row['date'],
+                'distance' => $row['distance'],
+                'duration' => $row['duration'],
+                'elevation_gain' => $row['elevation_gain'],
+                'description' => $row['description'],
+                'location' => $row['location'],
+                'update' => $row['update'],
+                'ID_tags' => $row['ID_tags'],
+                'ID_user' => $row['ID_user'],
+            ];
+
+            $hikes[] = $hike;
+        }
+
+        return $hikes;
+    }
 }
 
 

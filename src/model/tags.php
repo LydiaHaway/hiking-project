@@ -37,6 +37,29 @@ class Tags extends Database
 
         return $tagsID;
     }
+
+    // To display a list of all tags 
+
+    public function getListTags()
+    {
+
+        $db = $this->connectDb();
+
+        $req = $db->query('SELECT * FROM tags');
+
+        $tags = [];
+
+        while (($row = $req->fetch())) {
+            $tag = [
+                'ID' => $row['ID'],
+                'name' => $row['name'],
+            ];
+
+            $tags[] = $tag;
+        }
+
+        return $tags;
+    }
 }
 
 $tags = new Tags();
