@@ -1,4 +1,10 @@
 h1 {
     @include large-typo;
-    color: red;
+    font-size: 4.2rem;
+}
+
+div {
+    border: 0.2rem solid black;
+    margin: 0.4rem;
+    padding: 0.4rem;
 }

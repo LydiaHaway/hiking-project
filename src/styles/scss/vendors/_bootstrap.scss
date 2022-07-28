@@ -1,0 +1,146 @@
+$smartphone: 560px;
+$tablet: 768px;
+$minidesktop: 980px;
+$desktop: 1140px;
+
+@mixin row($gutter: 1rem) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: $gutter * -1;
+  margin-right: $gutter * -1;
+  width: calc(100% + #{$gutter * 2});
+}
+
+@mixin col($col) {
+  width: calc(100% / 12 * #{$col} - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.row {
+  @include row();
+}
+
+.row-fluid {
+  @include row(0);
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: calc(100% / 12 * #{$i} - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .coln-#{$i} {
+    width: calc((100% / 12 * #{$i}));
+  }
+}
+
+@media all and (min-width: $smartphone) {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      width: calc(100% / 12 * #{$i} - 2rem);
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .coln-sm-#{$i} {
+      width: calc((100% / 12 * #{$i}));
+    }
+  }
+}
+
+@media all and (min-width: $tablet) {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      width: calc(100% / 12 * #{$i} - 2rem);
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .coln-md-#{$i} {
+      width: calc((100% / 12 * #{$i}));
+    }
+  }
+}
+
+@media all and (min-width: $minidesktop) {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      width: calc(100% / 12 * #{$i} - 2rem);
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .coln-lg-#{$i} {
+      width: calc((100% / 12 * #{$i}));
+    }
+  }
+}
+
+@media all and (min-width: $desktop) {
+  @for $i from 1 through 12 {
+    .col-xl-#{$i} {
+      width: calc(100% / 12 * #{$i} - 2rem);
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .coln-xl-#{$i} {
+      width: calc((100% / 12 * #{$i}));
+    }
+  }
+}
+
+@media (max-width: $desktop) {
+  .hidden-lg-down {
+    display: none !important;
+  }
+}
+
+@media (max-width: $minidesktop) {
+  .hidden-mlg-down {
+    display: none !important;
+  }
+}
+
+@media (max-width: $tablet) {
+  .hidden-md-down {
+    display: none !important;
+  }
+  .text-md-center {
+    text-align: center;
+  }
+}
+
+@media (max-width: $smartphone) {
+  .hidden-sm-down {
+    display: none !important;
+  }
+}
+
+@media (min-width: $desktop) {
+  .hidden-lg-up {
+    display: none !important;
+  }
+}
+
+@media (min-width: $minidesktop) {
+  .hidden-mlg-up {
+    display: none !important;
+  }
+}
+
+@media (min-width: $tablet) {
+  .hidden-md-up {
+    display: none !important;
+  }
+}
+
+@media (min-width: $smartphone) {
+  .hidden-sm-up {
+    display: none !important;
+  }
+}
+
+@include smartphone {
+  .text-md-center {
+    text-align: center;
+  }
+}
