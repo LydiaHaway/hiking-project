@@ -1,7 +1,5 @@
 <?php
 
-require '../model/hikes.php';
+require_once '../model/hikes.php';
 
-$hikes = new Hikes();
-
-require '../view/homepage.php';
+require_once '../view/homepage.php';

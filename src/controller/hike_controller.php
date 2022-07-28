@@ -1,12 +1,10 @@
 <?php
 
 
-require '../model/hikes.php';
+require_once '../model/hikes.php';
 
-$hikeByID = new Hikes();
+require_once '../model/users.php';
 
-$tag = new Hikes();
+require_once '../model/tags.php';
 
-$user = new Hikes();
-
-require '../view/hike.php';
+require_once '../view/hike.php';

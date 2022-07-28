@@ -13,8 +13,7 @@
     <main>
 
         <?php
-        $hikes = $hikeByID->getHike($_GET["id"]);
-        foreach ($hikes as $hike) {
+        foreach ($hikes->getHike($_GET["id"]) as $key => $hike) {
         ?>
             <div class="hikes">
                 <h1>
@@ -25,8 +24,7 @@
                 </p>
 
                 <?php
-                $users = $user->getUser($hike['ID_user']);
-                foreach ($users as $user) {
+                foreach ($users->getUser($hike['ID_user']) as $key => $user) {
                 ?>
 
                     <p class="user"> Par <?php echo htmlspecialchars($user['nickname']); ?>
@@ -51,8 +49,7 @@
                 </p>
 
                 <?php
-                $tags = $tag->getTag($hike['ID_tags']);
-                foreach ($tags as $tag) {
+                foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
                 ?>
 
                     <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>

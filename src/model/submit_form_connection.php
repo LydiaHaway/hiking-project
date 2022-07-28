@@ -1,6 +1,6 @@
 <?php
 
-require '../model/users.php';
+require_once '../model/users.php';
 
 // Validation du formulaire
 if (isset($_POST['email']) &&  isset($_POST['password'])) {

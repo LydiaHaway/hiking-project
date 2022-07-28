@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require 'database.php';
+require_once 'database.php';
 
 class Hikes extends Database
 {
@@ -57,7 +57,7 @@ class Hikes extends Database
 
         $req->execute();
 
-        $hikes = [];
+        $hikesID = [];
 
         while (($row = $req->fetch())) {
             $hike = [
@@ -74,75 +74,13 @@ class Hikes extends Database
                 'ID_user' => $row['ID_user'],
             ];
 
-            $hikes[] = $hike;
+            $hikesID[] = $hike;
         }
 
-        return $hikes;
+        return $hikesID;
     }
-
-    // To display Tags
-
-    public function getTag(int $id)
-    {
-
-        $id;
-
-        $db = $this->connectDb();
-
-        $req = $db->prepare('SELECT *
-        FROM tags
-        WHERE id= :id');
-
-
-        $req->bindValue(':id', $id);
-
-        $req->execute();
-
-        $tags = [];
-
-        while (($row = $req->fetch())) {
-            $tag = [
-                'ID' => $row['ID'],
-                'name' => $row['name'],
-            ];
-
-            $tags[] = $tag;
-        }
-
-        return $tags;
-    }
-
-    // To display User
-
-    public function getUser(int $id)
-    {
-
-        $id;
-
-        $db = $this->connectDb();
-
-        $req = $db->prepare('SELECT *
-        FROM users
-        WHERE id= :id');
-
-
-        $req->bindValue(':id', $id);
-
-        $req->execute();
-
-        $users = [];
-
-        while (($row = $req->fetch())) {
-            $user = [
-                'ID' => $row['ID'],
-                'firstname' => $row['firstname'],
-                'lastname' => $row['lastname'],
-                'nickname' => $row['nickname'],
-            ];
-
-            $users[] = $user;
-        }
-
-        return $users;
-    }
+ 
 }
+
+
+$hikes = new Hikes();
