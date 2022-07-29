@@ -74,17 +74,18 @@ class Users extends Database
 
         $db = $this->connectDb();
 
-        $pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
+        //$pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
-        $req = $db->query('INSERT INTO users(firstname, lastname, 
-        nickname, email, password) VALUES(:firstname, :lastname, 
-        :nickname, :email, :password )');
+        $req = $db->prepare(' INSERT INTO users (ID, firstname, lastname, nickname, 
+        email, password) VALUES (NULL, :firstname, :lastname, 
+        :nickname, :email, :password );
+        ');
 
         $req->bindValue(':firstname', $_POST['firstname']);
         $req->bindValue(':lastname', $_POST['lastname']);
         $req->bindValue(':nickname', $_POST['nickname']);
         $req->bindValue(':email', $_POST['email']);
-        $req->bindValue(':password', $pass);
+        $req->bindValue(':password', $_POST['password']);
 
         $req->execute();
     }

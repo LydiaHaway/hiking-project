@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
     <title>Hike</title>
 </head>
 
 <body>
 
-    <?php require 'include/header.php' ?>
-
+    <section class="logo-banner">
+        <h1>
+            <img src="img/logo.png" alt="Logo with a mountain and a pine tree">
+        </h1>
+        <?php require 'include/header.php' ?>
+    </section>
     <main>
 
         <?php

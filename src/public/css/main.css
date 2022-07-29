@@ -147,16 +147,40 @@ body {
   font-size: 1.6rem;
 }
 
-h1 {
-  font-family: "Jura", sans-serif;
-  font-weight: 700;
-  font-size: 4.2rem;
+button {
+  border-radius: 5rem;
+  border-style: hidden;
+  color: black;
 }
 
-.logo-banner {
-  background-color: lightgrey;
-  text-align: center;
-  padding: 2rem;
+button:hover {
+  background-color: darkgreen;
+}
+
+li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+p {
+  margin: 1rem;
+}
+
+.logo-banner img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
 }
 
 .nav-banner {
@@ -167,14 +191,6 @@ h1 {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 1rem;
-}
-
-button.btn-banner {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 5rem;
-  border-style: hidden;
 }
 
 body {
@@ -193,8 +209,12 @@ div {
   padding: 1.4rem;
 }
 
-h3 {
-  background-color: yellow;
+h3.title {
+  font-size: 2.2rem;
+}
+
+p.user {
+  font-style: italic;
 }
 
 .row {
