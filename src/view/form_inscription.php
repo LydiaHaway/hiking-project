@@ -21,7 +21,7 @@ if (!empty($_POST)) {
                 $user['nickname'] === $_POST['nickname']
             ) {
                 require_once 'include/header.php';
-                echo "this nickname has already been used " . '<br>';
+                echo "this nickname has already been used!" . '<br>';
             } else {
                 $users->subscription();
 
