@@ -9,14 +9,25 @@ if (!empty($_POST)) {
         !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["nickname"]) && !empty($_POST["email"])
         && !empty($_POST["password"])
     ) {
+        foreach ($users->getUsers() as $key => $user) {
+            if (
+                $user['email'] === $_POST['email']
+            ) {
+                echo "your email has already been used!";
+            }
 
-        $users->subscription();
+            if (
+                $user['nickname'] === $_POST['nickname']
+            ) {
+                echo "this nickname has already been used ";
+            } else {
+                $users->subscription();
 
-        echo "Your subscription is done!";
+                echo "Your subscription is done!";
+            }
+        }
     }
 }
-
-
 
 ?>
 
