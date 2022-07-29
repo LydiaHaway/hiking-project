@@ -4,9 +4,16 @@ require_once '../model/users.php';
 
 if (!empty($_POST)) {
 
-    $users->subscription();
+    if (
+        isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["email"], $_POST["password"]) &&
+        !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["nickname"]) && !empty($_POST["email"])
+        && !empty($_POST["password"])
+    ) {
 
-    echo "Your subscription is done!";
+        $users->subscription();
+
+        echo "Your subscription is done!";
+    }
 }
 
 
