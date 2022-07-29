@@ -14,7 +14,7 @@
 
         <h1>Connectez vous !</h1>
 
-        <form method="POST" action="/model/submit_form_connection.php">
+        <form method="POST" action="profileUser">
             <div>
                 <label for="email">Email </label>
                 <input type="email" name="email">

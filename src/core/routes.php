@@ -11,6 +11,6 @@ $routes = [
     ],
 
     'POST' => [
-        '/model/submit_form_connection.php' => '../model/submit_form_connection.php',
+        '/profileUser' => '../view/profileUser.php',
     ],
 ];
