@@ -13,5 +13,6 @@ $routes = [
 
     'POST' => [
         '/profileUser' => '../view/profileUser.php',
+        '/form_inscription' => '../controller/controller_form_inscription.php',
     ],
 ];

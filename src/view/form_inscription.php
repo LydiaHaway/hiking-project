@@ -2,6 +2,13 @@
 
 require_once '../model/users.php';
 
+if (!empty($_POST)) {
+
+    $users->subscription();
+}
+
+
+
 ?>
 
 
@@ -33,7 +40,7 @@ require_once '../model/users.php';
             </div>
 
             <div>
-                <label for="nickname">Nom </label>
+                <label for="nickname">Login </label>
                 <input type="text" name="nickname">
             </div>
 
