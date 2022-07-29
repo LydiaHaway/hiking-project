@@ -5,6 +5,8 @@ require_once '../model/users.php';
 if (!empty($_POST)) {
 
     $users->subscription();
+
+    echo "Your subscription is done!";
 }
 
 
