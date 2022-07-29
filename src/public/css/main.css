@@ -150,10 +150,11 @@ body {
 button {
   border-radius: 5rem;
   border-style: hidden;
-  color: black;
+  color: rgb(0, 0, 0);
 }
 
 button:hover {
+  color: white;
   background-color: darkgreen;
 }
 
@@ -168,6 +169,17 @@ li {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.button {
+  color: darkgreen;
+  background-color: white;
+  border-radius: 5rem;
+  border-style: hidden;
+}
+.button:hover {
+  color: white;
+  background-color: darkgreen;
 }
 
 p {
@@ -207,14 +219,23 @@ div {
   margin: 0.4rem;
   margin-top: 1.4rem;
   padding: 1.4rem;
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
 }
 
 h3.title {
   font-size: 2.2rem;
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
 }
 
 p.user {
   font-style: italic;
+}
+
+p.description {
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
 }
 
 .row {

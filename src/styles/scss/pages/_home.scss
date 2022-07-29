@@ -11,13 +11,15 @@ div {
   margin: 0.4rem;
   margin-top: 1.4rem;
   padding: 1.4rem;
+  @include medium-typo;
 }
 
 h3.title {
   font-size: 2.2rem;
+  @include large-typo;
 }
 
 p.user {
   font-style: italic;
-  
+
 }
