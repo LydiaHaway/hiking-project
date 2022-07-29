@@ -102,7 +102,7 @@ class Hikes extends Database
 
         $req->execute();
 
-        $hikes = [];
+        $hikesTag = [];
 
         while (($row = $req->fetch())) {
             $hike = [
@@ -119,12 +119,51 @@ class Hikes extends Database
                 'ID_user' => $row['ID_user'],
             ];
 
-            $hikes[] = $hike;
+            $hikesTag[] = $hike;
         }
 
-        return $hikes;
+        return $hikesTag;
+    }
+
+    // to display hikes by users 
+
+    public function getHikeByUser(int $id)
+    {
+        $db = $this->connectDb();
+
+        $req = $db->prepare('SELECT *
+         FROM hikes
+         WHERE ID_user= :id');
+
+
+        $req->bindValue(':id', $id);
+
+        $req->execute();
+
+        $hikesUser = [];
+
+        while (($row = $req->fetch())) {
+            $hike = [
+                'ID' => $row['ID'],
+                'name' => $row['name'],
+                'date' => $row['date'],
+                'distance' => $row['distance'],
+                'duration' => $row['duration'],
+                'elevation_gain' => $row['elevation_gain'],
+                'description' => $row['description'],
+                'location' => $row['location'],
+                'update' => $row['update'],
+                'ID_tags' => $row['ID_tags'],
+                'ID_user' => $row['ID_user'],
+            ];
+
+            $hikesUser[] = $hike;
+        }
+
+        return $hikesUser;
     }
 }
+
 
 
 $hikes = new Hikes();

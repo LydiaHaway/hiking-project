@@ -19,6 +19,7 @@ class Users extends Database
 
         while (($row = $req->fetch())) {
             $user = [
+                'ID' => $row['ID'],
                 'firstname' => $row['firstname'],
                 'lastname' => $row['lastname'],
                 'nickname' => $row['nickname'],
@@ -56,6 +57,8 @@ class Users extends Database
                 'firstname' => $row['firstname'],
                 'lastname' => $row['lastname'],
                 'nickname' => $row['nickname'],
+                'email' => $row['email'],
+                'password' => $row['password'],
             ];
 
             $usersID[] = $user;
