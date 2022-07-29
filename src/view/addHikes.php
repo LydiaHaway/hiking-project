@@ -1,3 +1,11 @@
+
+<?php
+
+require_once '../model/hikes.php';
+require_once '../model/users.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +18,18 @@
 </head>
 
 <body>
+    <?php require 'include/header.php' ?>
 
     <main>
-        <form method="POST" action="">
+        <form method="POST" action="form_hike">
             <div>
                 <label for="name">Titre </label>
                 <input type="text" name="name">
+            </div>
+
+            <div>
+                <label for="date">Date </label>
+                <input type="date" name="date">
             </div>
 
             <div>
@@ -24,13 +38,18 @@
             </div>
 
             <div>
-                <label for="elevation_gain">Elevation positive </label>
+                <label for="duration">Durée </label>
+                <input type="number" name="duration">
+            </div>
+
+            <div>
+                <label for="elevation_gain">Élévation positive </label>
                 <input type="number" name="elevation_gain">
             </div>
 
             <div>
                 <label for="description">Description </label>
-                <textarea name="description" id="description" cols="15" rows="5"></textarea>
+                <textarea name="textarea" id="description" cols="15" rows="5"></textarea>
             </div>
 
             <div>
@@ -38,12 +57,29 @@
                 <input type="text" name="location">
             </div>
 
-            <div>
-                <label for="tags">Tags </label>
-                <select>
-                    <option></option>
-                </select>
-            </div>
+            <fieldset>
+                <legend>Veuillez sélectionner votre tag :</legend>
+                <div>
+                    <input type="checkbox" id="easy" name="tags" value="easy">
+                    <label for="easy">Facile</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="middle" name="tags" value="middle">
+                    <label for="middle">Intermédiaire</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="hard" name="tags" value="hard">
+                    <label for="hard">Difficile</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="forest" name="tags" value="forest">
+                    <label for="forest">Forestier</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="mountainous" name="tags" value="mountainous">
+                    <label for="mountainous">Montagneux</label>
+                </div>
+            </fieldset>
 
             <br>
 

@@ -67,7 +67,7 @@ class Users extends Database
         return $usersID;
     }
 
-    // insert 
+    // insert User
 
     public function subscription()
     {

@@ -162,6 +162,31 @@ class Hikes extends Database
 
         return $hikesUser;
     }
+
+    // insert User
+
+    public function addHike()
+    {
+
+        $db = $this->connectDb();
+
+        $req = $db->prepare(' INSERT INTO hikes (ID, name, date, distance, 
+        duration, elevation_gain, description, location, ID_tags, ID_user) VALUES (NULL, :name, :date, 
+        :distance, :duration, :elevation_gain, :description, :location, :ID_tags, :ID_user);
+        ');
+
+        $req->bindValue(':name', $_POST['name']);
+        $req->bindValue(':date', $_POST['date']);
+        $req->bindValue(':distance', $_POST['distance']);
+        $req->bindValue(':duration', $_POST['duration']);
+        $req->bindValue(':elevation_gain', $_POST['elevation_gain']);
+        $req->bindValue(':description', $_POST['description']);
+        $req->bindValue(':location', $_POST['location']);
+        $req->bindValue(':ID_tags', $_POST['tags']);
+        $req->bindValue(':ID_user', $_POST['firstname']);
+
+        $req->execute();
+    }
 }
 
 
