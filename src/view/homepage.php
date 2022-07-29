@@ -11,18 +11,19 @@
 
 <body>
 
-    <h1>
-        <section class="logo-banner">
+    <section class="logo-banner">
+        <h1>
+            <img src="img/logo.png" alt="Logo with a mountain and a pine tree">
+        </h1>
 
-            Hikes challenge
-            <!-- Remplacer par le logo -->
-    </h1>
-    <article class="nav-banner">
-        <button class="btn-banner"><?php require 'include/header.php' ?></button>
-        <button class="btn-banner"><?php require 'include/header.php' ?></button>
-        <button class="btn-banner"><?php require 'include/header.php' ?></button>
-        <button class="btn-banner"><?php require 'include/header.php' ?></button>
-    </article>
+
+
+        <article class="nav-banner">
+            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
+            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
+            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
+            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
+        </article>
     </section>
 
 

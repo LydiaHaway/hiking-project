@@ -1,0 +1,15 @@
+button {
+  border-radius: 5rem;
+  border-style: hidden;
+  color: black;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
