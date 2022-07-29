@@ -1,3 +1,10 @@
+<?php
+
+require_once '../model/users.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +21,7 @@
 
         <h1>Inscrivez vous !</h1>
 
-        <form method="POST" action="/model/submit_form_inscription.php">
+        <form method="POST" action="form_inscription">
             <div>
                 <label for="firstname">Prénom </label>
                 <input type="text" name="firstname">
@@ -29,7 +36,7 @@
                 <label for="nickname">Nom </label>
                 <input type="text" name="nickname">
             </div>
-            
+
             <div>
                 <label for="email">Email </label>
                 <input type="email" name="email">
