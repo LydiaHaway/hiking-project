@@ -138,9 +138,3 @@ $desktop: 1140px;
     display: none !important;
   }
 }
-
-@include smartphone {
-  .text-md-center {
-    text-align: center;
-  }
-}

@@ -11,9 +11,23 @@
 
 <body>
 
-    <?php require_once 'include/header.php'
+    <h1>
+        <section class="logo-banner">
 
-    ?>
+            Hikes challenge
+            <!-- Remplacer par le logo -->
+    </h1>
+    <article class="nav-banner">
+        <button class="btn-banner"><?php require 'include/header.php' ?></button>
+        <button class="btn-banner"><?php require 'include/header.php' ?></button>
+        <button class="btn-banner"><?php require 'include/header.php' ?></button>
+        <button class="btn-banner"><?php require 'include/header.php' ?></button>
+    </article>
+    </section>
+
+
+
+
 
     <main>
 

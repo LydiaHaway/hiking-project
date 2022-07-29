@@ -10,9 +10,7 @@
 
 <body>
 
-    <?php require_once 'include/header.php'
-
-    ?>
+    <?php require 'include/header.php' ?>
 
     <main>
 
