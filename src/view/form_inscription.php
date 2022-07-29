@@ -13,17 +13,20 @@ if (!empty($_POST)) {
             if (
                 $user['email'] === $_POST['email']
             ) {
-                echo "your email has already been used!";
+                require_once 'include/header.php';
+                echo "your email has already been used!" . '<br>';
             }
 
             if (
                 $user['nickname'] === $_POST['nickname']
             ) {
-                echo "this nickname has already been used ";
+                require_once 'include/header.php';
+                echo "this nickname has already been used " . '<br>';
             } else {
                 $users->subscription();
 
-                echo "Your subscription is done!";
+                require_once 'include/header.php';
+                echo "Your subscription is done!" . '<br>';
             }
         }
     }
@@ -43,6 +46,8 @@ if (!empty($_POST)) {
 </head>
 
 <body>
+
+    <?php require 'include/header.php' ?>
 
     <main>
 
