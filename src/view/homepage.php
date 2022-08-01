@@ -15,19 +15,16 @@ session_start();
 
 <body>
 
-    <section class="logo-banner">
-        <h1>
-            <img src="img/logo.png" alt="Logo with a mountain and a pine tree">
-        </h1>
+    <section class="header-banner">
 
+        <!-- A modif dès que les autres pages sont prêtes -->
 
+        <a class="button" href="home"><?php require 'include/header.php' ?></a>
+        <a class="button" href="home"><?php require 'include/header.php' ?></a>
+        <img src="img/logo.png" alt="Logo with a mountain & a pine tree">
+        <a class="button" href="home"><?php require 'include/header.php' ?></a>
+        <a class="button" href="home"><?php require 'include/header.php' ?></a>
 
-        <article class="nav-banner">
-            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
-            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
-            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
-            <button class="btn-banner" type="button"><?php require 'include/header.php' ?></button>
-        </article>
     </section>
 
 

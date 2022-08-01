@@ -147,10 +147,11 @@ body {
   font-size: 1.6rem;
 }
 
-button {
+/* button {
   border-radius: 5rem;
   border-style: hidden;
-  color: rgb(0, 0, 0);
+  justify-content: space-between;
+  color: darkgreen;
 }
 
 button:hover {
@@ -158,7 +159,30 @@ button:hover {
   background-color: darkgreen;
 }
 
-li {
+.button {
+  color: darkgreen;
+  background-color: white;
+  border-radius: 5rem;
+  border-style: hidden;
+
+  &:hover {
+    color: white;
+    background-color: darkgreen;
+  }
+}
+*/
+button {
+  color: rgb(137, 81, 38);
+  padding: 0.5rem;
+  border: 0.2rem solid darkgreen;
+  border-radius: 2rem;
+}
+
+p {
+  margin: 1rem;
+}
+
+.header-banner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,43 +190,28 @@ li {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-
-.button {
-  color: darkgreen;
-  background-color: white;
-  border-radius: 5rem;
-  border-style: hidden;
-}
-.button:hover {
-  color: white;
-  background-color: darkgreen;
-}
-
-p {
-  margin: 1rem;
-}
-
-.logo-banner img {
+.header-banner img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
   height: auto;
   border-radius: 50%;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 
-.nav-banner {
-  background-color: lightgrey;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 1rem;
+li {
+  margin: 7rem;
+  padding: 0.5rem;
+  border: 0.2rem solid darkgreen;
+  border-radius: 2rem;
+  color: rgb(137, 81, 38);
+  background-color: white;
 }
 
 body {

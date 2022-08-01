@@ -1,4 +1,7 @@
-.logo-banner {
+.header-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   img {
     display: block;
     margin-left: auto;
@@ -6,11 +9,15 @@
     max-width: 100%;
     height: auto;
     border-radius: 50%;
+    transform: scale(0.8);
   }
 }
-.nav-banner {
-  background-color: lightgrey;
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
+
+li {
+  margin: 7rem;
+  padding: 0.5rem;
+  border: 0.2rem solid darkgreen;
+  border-radius: 2rem;
+  color: rgb(137, 81, 38);
+  background-color: white;
 }

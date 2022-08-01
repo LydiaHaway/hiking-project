@@ -1,18 +1,13 @@
-button {
+/* button {
   border-radius: 5rem;
   border-style: hidden;
-  color: rgb(0, 0, 0);
+  justify-content: space-between;
+  color: darkgreen;
 }
 
 button:hover {
   color: white;
   background-color: darkgreen;
-}
-
-li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 
 .button {
@@ -25,4 +20,11 @@ li {
     color: white;
     background-color: darkgreen;
   }
+}
+*/
+button {
+  color: rgb(137, 81, 38);
+  padding: 0.5rem;
+  border: 0.2rem solid darkgreen;
+  border-radius: 2rem;
 }
