@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once '../model/users.php';
 
 if (!empty($_POST)) {

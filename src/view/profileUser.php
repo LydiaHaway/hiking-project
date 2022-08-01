@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once '../model/users.php';
 require_once '../model/hikes.php';
 require_once '../model/tags.php';
@@ -11,9 +13,9 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
             $user['email'] === $_POST['email'] &&
             $user['password'] === $_POST['password']
         ) {
-            $loggedUser = [
+            $_SESSION['LOGGED_USER'] = [
                 'firstname' => $user['firstname'],
-
+                'email' => $user['email'],
                 'ID' => $user['ID'],
 
             ];
@@ -40,7 +42,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
 <!--
    Si utilisateur/trice est non identifié(e), on affiche le formulaire
 -->
-<?php if(!isset($loggedUser)): ?>
+<?php if(!isset($_SESSION['LOGGED_USER'])): ?>
 <form action="/view/profileUser.php" method="POST">
     <!-- si message d'erreur on l'affiche -->
     <?php if(isset($errorMessage)) : ?>
@@ -67,10 +69,10 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
 -->
 <?php else: ?>
     <h1>
-        Bonjour <?php echo $loggedUser['firstname']; ?> et bienvenue sur le site !
+        Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !
     </h1>
 
-    <a class="button" href="*">
+    <a class="button" href="formulaire_hike">
         <button>Ajouter une randonnée</button>
     </a>
 
@@ -80,7 +82,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
     </p>
 
     <?php 
-    foreach($hikes->getHikeByUser($loggedUser['ID']) as $key => $hike) {
+    foreach($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
     ?>
         
         <div class="hikes">

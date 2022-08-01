@@ -1,8 +1,16 @@
-
 <?php
+
+session_start();
 
 require_once '../model/hikes.php';
 require_once '../model/users.php';
+require_once '../model/tags.php';
+
+if (!empty($_POST)){
+
+    $hikes->addHike();
+    echo "Your subscription is done!" . '<br>';
+}
 
 ?>
 
@@ -28,28 +36,23 @@ require_once '../model/users.php';
             </div>
 
             <div>
-                <label for="date">Date </label>
-                <input type="date" name="date">
-            </div>
-
-            <div>
-                <label for="distance">Distance </label>
+                <label for="distance">Distance (km) </label>
                 <input type="number" name="distance">
             </div>
 
             <div>
-                <label for="duration">Durée </label>
+                <label for="duration">Durée (heure) </label>
                 <input type="number" name="duration">
             </div>
 
             <div>
-                <label for="elevation_gain">Élévation positive </label>
+                <label for="elevation_gain">Élévation positive (m) </label>
                 <input type="number" name="elevation_gain">
             </div>
 
             <div>
                 <label for="description">Description </label>
-                <textarea name="textarea" id="description" cols="15" rows="5"></textarea>
+                <textarea name="textarea" name="description" cols="15" rows="5"></textarea>
             </div>
 
             <div>
@@ -59,31 +62,23 @@ require_once '../model/users.php';
 
             <fieldset>
                 <legend>Veuillez sélectionner votre tag :</legend>
-                <div>
-                    <input type="checkbox" id="easy" name="tags" value="easy">
-                    <label for="easy">Facile</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="middle" name="tags" value="middle">
-                    <label for="middle">Intermédiaire</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="hard" name="tags" value="hard">
-                    <label for="hard">Difficile</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="forest" name="tags" value="forest">
-                    <label for="forest">Forestier</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="mountainous" name="tags" value="mountainous">
-                    <label for="mountainous">Montagneux</label>
-                </div>
+               
+                <?php
+                $tags->getListTags()
+                ?>
+                    <div class="tags">
+                            <input type="texte" name="ID_tags" value="<?php echo htmlspecialchars($tag['ID']); ?>">
+                            <label for="<?php echo htmlspecialchars($tag['ID']); ?>"><?php echo htmlspecialchars($tag['name']); ?></label>
+                    </div>
+            
             </fieldset>
+
+            <input type="hidden" name="ID_user" value="<?php echo htmlspecialchars($_SESSION['LOGGED_USER']['ID']); ?>">
 
             <br>
 
             <button type="submit">Ajouter</button>
+
         </form>
     </main>
 
