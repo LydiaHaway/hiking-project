@@ -33,12 +33,19 @@ session_start();
 
     <main>
 
-        <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname'] ; ?> !</h2>
-        <?php if($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
+        <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> !</h2>
+        <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
             <a class="button" href="admin">
                 <button>Utilisateurs</button>
             </a>
         <?php } ?>
+
+        <br>
+        <br>
+
+        <a href="/profileUser">
+            <button>profile</button>
+        </a>
 
         <?php
         foreach ($hikes->getHikes() as $key => $hike) {
@@ -49,18 +56,18 @@ session_start();
                     <?php echo htmlspecialchars($hike['name']); ?>
                     <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
                 </h3>
-                <?php if($hike['date'] != $hike['update_hike']) { ?>
-                        <p class="date">  
-                            <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike']));?></em>
-                        </p>
-                    <?php } ?>
+                <?php if ($hike['date'] != $hike['update_hike']) { ?>
+                    <p class="date">
+                        <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></em>
+                    </p>
+                <?php } ?>
 
                 <?php
                 foreach ($users->getUser($hike['ID_user']) as $key => $user) {
                 ?>
 
-                        <p class="user"> Par <?php echo htmlspecialchars($user['nickname']); ?>
-                        </p>
+                    <p class="user"> Par <?php echo htmlspecialchars($user['nickname']); ?>
+                    </p>
 
                     <p class="info">
                         Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
@@ -86,7 +93,7 @@ session_start();
                         <button>Plus d'info</button>
                     </a>
 
-                     <?php if($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
+                    <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
 
                         <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                             <button>Modifier la randonnée</button>
