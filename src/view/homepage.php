@@ -33,6 +33,7 @@ session_start();
 
     <main>
 
+        <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname'] ; ?> !</h2>
         <?php
         foreach ($hikes->getHikes() as $key => $hike) {
         ?>
@@ -52,36 +53,43 @@ session_start();
                 foreach ($users->getUser($hike['ID_user']) as $key => $user) {
                 ?>
 
-                    <p class="user"> Par <?php echo htmlspecialchars($user['nickname']); ?>
+                        <p class="user"> Par <?php echo htmlspecialchars($user['nickname']); ?>
+                        </p>
+
+                    <p class="info">
+                        Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                        durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
                     </p>
 
-                <?php
-                }
-                ?>
-
-                <p class="info">
-                    Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
-                    durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
-                </p>
-
-                <p class="location">
-                    Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
-                </p>
-
-                <?php
-                foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
-                ?>
-
-                    <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
+                    <p class="location">
+                        Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
                     </p>
 
-                <?php
-                }
-                ?>
+                    <?php
+                    foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
+                    ?>
 
-                <a class="button" href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                    <button>Plus d'info</button>
-                </a>
+                        <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
+                        </p>
+
+                    <?php
+                    }
+                    ?>
+
+                    <a class="button" href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                        <button>Plus d'info</button>
+                    </a>
+
+                     <?php if($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
+
+                        <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                            <button>Modifier la randonnée</button>
+                        </a>
+                        <a class="button" href="*">
+                            <button>Supprimer la randonnée</button>
+                        </a>
+                    <?php } ?>
+                <?php } ?>
             </div>
         <?php
         }

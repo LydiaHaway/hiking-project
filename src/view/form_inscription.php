@@ -81,6 +81,8 @@ if (!empty($_POST)) {
                 <input type="password" name="password">
             </div>
 
+            <input type="hidden" name="is_admin" value="0">
+
             <br>
 
             <button type="submit">S'inscrire</button>

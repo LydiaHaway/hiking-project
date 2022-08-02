@@ -25,6 +25,7 @@ class Users extends Database
                 'nickname' => $row['nickname'],
                 'email' => $row['email'],
                 'password' => $row['password'],
+                'is_admin' => $row['is_admin'],
             ];
 
             $users[] = $user;
@@ -59,6 +60,7 @@ class Users extends Database
                 'nickname' => $row['nickname'],
                 'email' => $row['email'],
                 'password' => $row['password'],
+                'is_admin' => $row['is_admin'],
             ];
 
             $usersID[] = $user;
@@ -77,8 +79,8 @@ class Users extends Database
         //$pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
         $req = $db->prepare(' INSERT INTO users (ID, firstname, lastname, nickname, 
-        email, password) VALUES (NULL, :firstname, :lastname, 
-        :nickname, :email, :password );
+        email, password, is_admin) VALUES (NULL, :firstname, :lastname, 
+        :nickname, :email, :password, :is_admin);
         ');
 
         $req->bindValue(':firstname', $_POST['firstname']);
@@ -86,6 +88,7 @@ class Users extends Database
         $req->bindValue(':nickname', $_POST['nickname']);
         $req->bindValue(':email', $_POST['email']);
         $req->bindValue(':password', $_POST['password']);
+        $req->bindValue(':is_admin', $_POST['is_admin']);
 
         $req->execute();
     }

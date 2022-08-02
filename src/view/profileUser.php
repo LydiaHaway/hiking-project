@@ -17,6 +17,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
                 'firstname' => $user['firstname'],
                 'email' => $user['email'],
                 'ID' => $user['ID'],
+                'is_admin' => $user['is_admin'],
 
             ];
         } else {
@@ -71,6 +72,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
     Si utilisateur/trice bien connectée on affiche un message de succès
 -->
     <?php else : ?>
+        <?php require_once '../view/include/header.php' ?>
         <h1>
             Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !
         </h1>
