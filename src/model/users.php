@@ -92,6 +92,27 @@ class Users extends Database
 
         $req->execute();
     }
+
+    // update User 
+
+    public function updateUser()
+    {
+
+        $db = $this->connectDb();
+
+        $req = $db->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname,
+        nickname = :nickname, email = :email, password = :password WHERE users . ID = :id');
+
+        $req->bindParam(':id', $_POST["ID"]);
+        $req->bindParam(':firstname', $_POST['firstname']);
+        $req->bindParam(':lastname', $_POST['lastname']);
+        $req->bindParam(':nickname', $_POST['nickname']);
+        $req->bindParam(':email', $_POST['email']);
+        $req->bindParam(':password', $_POST['password']);
+
+
+        $req->execute();
+    }
 }
 
 $users = new Users();

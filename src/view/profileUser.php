@@ -77,6 +77,41 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
             Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !
         </h1>
 
+        <?php
+        foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
+        ?>
+            <h2>Informations: </h2>
+            <p>
+                Firstname: <?php echo htmlspecialchars($user['firstname']); ?>
+            </p>
+
+            <p>
+                Lastname: <?php echo htmlspecialchars($user['lastname']); ?>
+            </p>
+
+            <p>
+                Login: <?php echo htmlspecialchars($user['nickname']); ?>
+            </p>
+
+            <p>
+                Email: <?php echo htmlspecialchars($user['email']); ?>
+            </p>
+
+            <a href="/profile_update">
+                <button>
+                    modifier
+                </button>
+            </a>
+
+            <br>
+            <br>
+
+        <?php
+        }
+        ?>
+
+
+
         <a class="button" href="formulaire_hike">
             <button>Ajouter une randonnée</button>
         </a>
@@ -98,10 +133,10 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
                     <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
                 </p>
 
-                <?php if($hike['date'] != $hike['update_hike']) { ?>
+                <?php if ($hike['date'] != $hike['update_hike']) { ?>
 
-                    <p class="date">  
-                        <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike']));?></em>
+                    <p class="date">
+                        <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></em>
                     </p>
 
                 <?php } ?>

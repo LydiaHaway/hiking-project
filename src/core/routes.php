@@ -11,7 +11,8 @@ $routes = [
         '/form_inscription' => '../controller/controller_form_inscription.php',
         '/formulaire_hike' => '../controller/controller_form_addHikes.php',
         '/form_update' => '../controller/controller_update.php',
-        '/add_tags' => '../controller/controller_add_tags.php'
+        '/add_tags' => '../controller/controller_add_tags.php',
+        '/profile_update' => '../controller/controller_profile_update.php',
     ],
 
     'POST' => [
@@ -20,5 +21,6 @@ $routes = [
         '/form_hike' => '../controller/controller_form_addHikes.php',
         '/form_update' => '../controller/controller_update.php',
         '/add_tags' => '../controller/controller_add_tags.php',
+        '/profile_update' => '../controller/controller_profile_update.php',
     ],
 ];
