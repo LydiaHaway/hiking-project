@@ -96,10 +96,6 @@ session_start();
         ?>
         </br>
 
-        <a class="button" href="home">
-            <button>Home</button>
-        </a>
-
 
     </main>
 
