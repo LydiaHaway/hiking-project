@@ -34,6 +34,12 @@ session_start();
     <main>
 
         <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname'] ; ?> !</h2>
+        <?php if($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
+            <a class="button" href="admin">
+                <button>Utilisateurs</button>
+            </a>
+        <?php } ?>
+
         <?php
         foreach ($hikes->getHikes() as $key => $hike) {
         ?>
