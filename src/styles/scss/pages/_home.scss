@@ -1,5 +1,5 @@
 body {
-  background-color: darkgrey;
+  background-color: rgb(212, 212, 212);
 }
 
 main {
@@ -12,6 +12,10 @@ div {
   margin-top: 1.4rem;
   padding: 1.4rem;
   @include medium-typo;
+  &.tags {
+    border: hidden;
+    margin-top: 0.1rem;
+  }
 }
 
 h3.title {
@@ -19,6 +23,10 @@ h3.title {
   @include large-typo;
 }
 
-p.user {
-  font-style: italic;
+.image-hike {
+  max-width: 30%;
+  max-height: 11.5rem;
+  border-radius: 1rem;
+  float: left;
+  margin-right: 2rem;
 }

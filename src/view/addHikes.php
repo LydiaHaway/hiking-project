@@ -32,12 +32,12 @@ if (!empty($_POST)) {
         <form method="POST" action="form_hike">
             <div>
                 <label for="name">Titre </label>
-                <input type="text" name="name">
+                <input type="text" id="name" name="name">
             </div>
 
             <div>
                 <label for="distance">Distance (km) </label>
-                <input type="number" name="distance">
+                <input type="number" id="distance" name="distance">
             </div>
 
             <div>
@@ -67,8 +67,8 @@ if (!empty($_POST)) {
                 foreach ($tags->getListTags() as $key => $tag) {
                 ?>
                     <div class="tags">
-                        <input type="radio" name="IDTags" value="<?php echo htmlspecialchars($tag['ID']); ?>">
-                        <label for="<?php echo htmlspecialchars($tag['ID']); ?>"><?php echo htmlspecialchars($tag['name']); ?></label>
+                        <input id="radio-<?php echo htmlspecialchars($tag['ID']); ?>" type="radio" name="IDTags" value="<?php echo htmlspecialchars($tag['ID']); ?>">
+                        <label for="radio-<?php echo htmlspecialchars($tag['ID']); ?>"><?php echo htmlspecialchars($tag['name']); ?></label>
                     </div>
                 <?php
                 }
@@ -79,7 +79,7 @@ if (!empty($_POST)) {
 
             <br>
 
-            <button type="submit">Ajouter</button>
+            <button class="button" type="submit">Ajouter</button>
 
         </form>
     </main>

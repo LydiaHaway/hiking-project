@@ -1,3 +1,11 @@
 p {
-    margin: 1rem;
+  @include small-typo;
+  margin: 1rem;
+
+  &.user {
+    font-style: italic;
+  }
+  p.tags {
+    text-align: end;
+  }
 }

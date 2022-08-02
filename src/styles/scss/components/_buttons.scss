@@ -25,6 +25,11 @@ button:hover {
 button {
   color: rgb(137, 81, 38);
   padding: 0.5rem;
-  border: 0.2rem solid darkgreen;
+  margin-top: 1rem;
+  border: none;
   border-radius: 2rem;
+}
+
+button:hover {
+  cursor: pointer;
 }
