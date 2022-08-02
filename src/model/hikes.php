@@ -195,16 +195,18 @@ class Hikes extends Database
 
         $db = $this->connectDb();
 
-        $req = $db->prepare('UPDATE hikes SET name = :name, distance = :distance, duration = :duration
-        elevation_gain = :elevation_gain, description = :description, location = :location WHERE hikes . id= :id');
-
+        $req = $db->prepare('UPDATE hikes SET name = :name, distance = :distance, duration = :duration,
+        elevation_gain = :elevation_gain, description = :description, location = :location, ID_tags = :IDTags WHERE hikes . ID = :id');
+        
+        $req->bindParam(':id', $_POST["ID"]);
         $req->bindParam(':name', $_POST['name']);
         $req->bindParam(':distance', $_POST['distance']);
         $req->bindParam(':duration', $_POST['duration']);
         $req->bindParam(':elevation_gain', $_POST['elevation_gain']);
         $req->bindParam(':description', $_POST['description']);
         $req->bindParam(':location', $_POST['location']);
-        $req->bindParam(':id', $_POST["id_user"]);
+        $req->bindParam(':IDTags', $_POST['IDTags']);
+       
 
         $req->execute();
     }

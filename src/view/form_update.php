@@ -7,8 +7,9 @@ require_once '../model/hikes.php';
 require_once '../model/tags.php';
 
 if (!empty($_POST)) {
-
+//var_dump($_POST);
     $hikes->updateHike();
+    echo 'Vos modifications ont été prises en compte !';
 }
 
 ?>
@@ -81,7 +82,7 @@ if (!empty($_POST)) {
                 </fieldset>
 
                 <div>
-                    <input type="hidden" name="ID_user" value="<?php echo htmlspecialchars($hike['ID']); ?>">
+                    <input type="hidden" name="ID" value="<?php echo htmlspecialchars($hike['ID']); ?>">
 
                 </div>
 
