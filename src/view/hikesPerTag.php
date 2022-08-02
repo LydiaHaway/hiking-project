@@ -64,6 +64,16 @@ session_start();
                 <a class="button" href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                     <button>Plus d'info</button>
                 </a>
+
+                <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
+
+                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                        <button>Modifier la randonnée</button>
+                    </a>
+                    <a class="button" href="*">
+                        <button>Supprimer la randonnée</button>
+                    </a>
+                <?php } ?>
             </div>
         <?php
         }
