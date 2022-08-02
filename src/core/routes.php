@@ -14,6 +14,7 @@ $routes = [
         '/add_tags' => '../controller/controller_add_tags.php',
         '/admin' => '../controller/controller_user_control.php',
         '/profile_update' => '../controller/controller_profile_update.php',
+        '/profileUser' => '../view/profileUser.php',
     ],
 
     'POST' => [

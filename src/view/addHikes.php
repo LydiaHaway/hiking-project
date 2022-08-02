@@ -10,6 +10,10 @@ if (!empty($_POST)) {
 
     $hikes->addHike();
     echo "Votre randonnée a été ajoutée!" . '<br>';
+
+    echo '<a href="/profileUser">
+    <button>profile</button>
+</a>';
 }
 
 ?>
