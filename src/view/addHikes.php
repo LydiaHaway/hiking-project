@@ -6,10 +6,10 @@ require_once '../model/hikes.php';
 require_once '../model/users.php';
 require_once '../model/tags.php';
 
-if (!empty($_POST)){
+if (!empty($_POST)) {
 
     $hikes->addHike();
-    echo "Your subscription is done!" . '<br>';
+    echo "Votre randonnée a été ajoutée!" . '<br>';
 }
 
 ?>
@@ -52,7 +52,7 @@ if (!empty($_POST)){
 
             <div>
                 <label for="description">Description </label>
-                <textarea name="textarea" name="description" cols="15" rows="5"></textarea>
+                <input type="text" name="description">
             </div>
 
             <div>
@@ -62,15 +62,17 @@ if (!empty($_POST)){
 
             <fieldset>
                 <legend>Veuillez sélectionner votre tag :</legend>
-               
+
                 <?php
-                $tags->getListTags()
+                foreach ($tags->getListTags() as $key => $tag) {
                 ?>
                     <div class="tags">
-                            <input type="texte" name="ID_tags" value="<?php echo htmlspecialchars($tag['ID']); ?>">
-                            <label for="<?php echo htmlspecialchars($tag['ID']); ?>"><?php echo htmlspecialchars($tag['name']); ?></label>
+                        <input type="radio" name="IDTags" value="<?php echo htmlspecialchars($tag['ID']); ?>">
+                        <label for="<?php echo htmlspecialchars($tag['ID']); ?>"><?php echo htmlspecialchars($tag['name']); ?></label>
                     </div>
-            
+                <?php
+                }
+                ?>
             </fieldset>
 
             <input type="hidden" name="ID_user" value="<?php echo htmlspecialchars($_SESSION['LOGGED_USER']['ID']); ?>">

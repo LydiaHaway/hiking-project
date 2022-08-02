@@ -20,7 +20,8 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
 
             ];
         } else {
-            $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
+            $errorMessage = sprintf(
+                'Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
                 $_POST['email'],
                 $_POST['password']
             );
@@ -31,61 +32,63 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
-<!--
+    <!--
    Si utilisateur/trice est non identifié(e), on affiche le formulaire
 -->
-<?php if(!isset($_SESSION['LOGGED_USER'])): ?>
-<form action="/view/profileUser.php" method="POST">
-    <!-- si message d'erreur on l'affiche -->
-    <?php if(isset($errorMessage)) : ?>
-        <div>
-            <?php echo $errorMessage; ?>
-        </div>
-    <?php endif; ?>
-    <div>
-        <label for="email">Email </label>
-        <input type="email" name="email">
-    </div>
+    <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
+        <form action="/view/profileUser.php" method="POST">
+            <!-- si message d'erreur on l'affiche -->
+            <?php if (isset($errorMessage)) : ?>
+                <div>
+                    <?php echo $errorMessage; ?>
+                </div>
+            <?php endif; ?>
+            <div>
+                <label for="email">Email </label>
+                <input type="email" name="email">
+            </div>
 
-    <div>
-        <label for="password">Mot de passe </label>
-        <input type="password" name="password">
-    </div>
+            <div>
+                <label for="password">Mot de passe </label>
+                <input type="password" name="password">
+            </div>
 
-    <br>
+            <br>
 
-    <button type="submit">Se connecter</button>
-</form>
-<!-- 
+            <button type="submit">Se connecter</button>
+        </form>
+        <!-- 
     Si utilisateur/trice bien connectée on affiche un message de succès
 -->
-<?php else: ?>
-    <h1>
-        Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !
-    </h1>
+    <?php else : ?>
+        <h1>
+            Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !
+        </h1>
 
-    <a class="button" href="formulaire_hike">
-        <button>Ajouter une randonnée</button>
-    </a>
+        <a class="button" href="formulaire_hike">
+            <button>Ajouter une randonnée</button>
+        </a>
 
 
-    <p>
-        Voici les randonnées que vous avez créées :
-    </p>
+        <p>
+            Voici les randonnées que vous avez créées :
+        </p>
 
-    <?php 
-    foreach($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
-    ?>
-        
-        <div class="hikes">
+        <?php
+        foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
+        ?>
+
+            <div class="hikes">
                 <h1>
                     <?php echo htmlspecialchars($hike['name']); ?>
                 </h1>
@@ -117,7 +120,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
                 }
                 ?>
 
-                <a class="button" href="*">
+                <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                     <button>Modifier la randonnée</button>
                 </a>
                 <a class="button" href="*">
@@ -127,7 +130,8 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
         <?php
         }
         ?>
-<?php endif; ?>
+    <?php endif; ?>
 
 </body>
+
 </html>

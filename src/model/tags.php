@@ -60,6 +60,23 @@ class Tags extends Database
 
         return $tags;
     }
+
+    //Add tag
+
+    public function addTags()
+    {
+
+        $db = $this->connectDb();
+
+        //$pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
+
+        $req = $db->prepare(' INSERT INTO tags (ID, name) VALUES (NULL, :name );
+        ');
+
+        $req->bindValue(':name', $_POST['name']);
+
+        $req->execute();
+    }
 }
 
 $tags = new Tags();

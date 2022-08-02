@@ -10,11 +10,15 @@ $routes = [
         '/tag' => '../controller/filter_tags_controller.php',
         '/form_inscription' => '../controller/controller_form_inscription.php',
         '/formulaire_hike' => '../controller/controller_form_addHikes.php',
+        '/form_update' => '../controller/controller_update.php',
+        '/add_tags' => '../controller/controller_add_tags.php'
     ],
 
     'POST' => [
         '/profileUser' => '../view/profileUser.php',
         '/form_inscription' => '../controller/controller_form_inscription.php',
         '/form_hike' => '../controller/controller_form_addHikes.php',
+        '/form_update' => '../controller/controller_update.php',
+        '/add_tags' => '../controller/controller_add_tags.php',
     ],
 ];

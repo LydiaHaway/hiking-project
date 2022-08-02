@@ -169,21 +169,42 @@ class Hikes extends Database
     {
 
         $db = $this->connectDb();
+        $date = date("Y-m-d H:i:s");
 
-        $req = $db->prepare('INSERT INTO hikes (ID, name, date, distance, 
-        duration, elevation_gain, description, location, update, ID_tags, ID_user) VALUES (NULL, :name, NULL, 
-        :distance, :duration, :elevation_gain, :description, :location, NULL, :ID_tags, :ID_user)
-        ');
+        $req = $db->prepare('INSERT INTO hikes ( name, date, distance, duration, elevation_gain, description, location, ID_tags, ID_user) VALUES ( :name, :date, :distance, :duration, :elevation_gain, :description, :location, :ID_tags, :ID_user)');
 
 
         $req->bindValue(':name', $_POST['name']);
+        $req->bindValue(':date', $date);
         $req->bindValue(':distance', $_POST['distance']);
         $req->bindValue(':duration', $_POST['duration']);
         $req->bindValue(':elevation_gain', $_POST['elevation_gain']);
         $req->bindValue(':description', $_POST['description']);
         $req->bindValue(':location', $_POST['location']);
-        $req->bindValue(':ID_tags', "1");
+        $req->bindValue(':ID_tags', $_POST['IDTags']);
         $req->bindValue(':ID_user', $_SESSION['LOGGED_USER']['ID']);
+
+        $req->execute();
+    }
+
+
+    //update hike
+
+    public function updateHike()
+    {
+
+        $db = $this->connectDb();
+
+        $req = $db->prepare('UPDATE hikes SET name = :name, distance = :distance, duration = :duration
+        elevation_gain = :elevation_gain, description = :description, location = :location WHERE hikes . id= :id');
+
+        $req->bindParam(':name', $_POST['name']);
+        $req->bindParam(':distance', $_POST['distance']);
+        $req->bindParam(':duration', $_POST['duration']);
+        $req->bindParam(':elevation_gain', $_POST['elevation_gain']);
+        $req->bindParam(':description', $_POST['description']);
+        $req->bindParam(':location', $_POST['location']);
+        $req->bindParam(':id', $_POST["id_user"]);
 
         $req->execute();
     }
