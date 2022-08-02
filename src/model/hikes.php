@@ -170,8 +170,10 @@ class Hikes extends Database
 
         $db = $this->connectDb();
         $date = date("Y-m-d H:i:s");
+        $update = date("Y-m-d H:i:s");
 
-        $req = $db->prepare('INSERT INTO hikes ( name, date, distance, duration, elevation_gain, description, location, ID_tags, ID_user) VALUES ( :name, :date, :distance, :duration, :elevation_gain, :description, :location, :ID_tags, :ID_user)');
+        $req = $db->prepare('INSERT INTO hikes ( name, date, distance, duration, elevation_gain, description, location, update_hike, ID_tags, ID_user) 
+        VALUES ( :name, :date, :distance, :duration, :elevation_gain, :description, :location, :update_hike, :ID_tags, :ID_user)');
 
 
         $req->bindValue(':name', $_POST['name']);
@@ -181,6 +183,7 @@ class Hikes extends Database
         $req->bindValue(':elevation_gain', $_POST['elevation_gain']);
         $req->bindValue(':description', $_POST['description']);
         $req->bindValue(':location', $_POST['location']);
+        $req->bindValue(':update_hike', $update);
         $req->bindValue(':ID_tags', $_POST['IDTags']);
         $req->bindValue(':ID_user', $_SESSION['LOGGED_USER']['ID']);
 
@@ -199,7 +202,7 @@ class Hikes extends Database
 
         $req = $db->prepare('UPDATE hikes SET name = :name, distance = :distance, duration = :duration,
         elevation_gain = :elevation_gain, description = :description, location = :location, update_hike = :update_hike, ID_tags = :IDTags WHERE hikes . ID = :id');
-        
+
         $req->bindParam(':id', $_POST["ID"]);
         $req->bindParam(':name', $_POST['name']);
         $req->bindParam(':distance', $_POST['distance']);
@@ -209,7 +212,7 @@ class Hikes extends Database
         $req->bindParam(':location', $_POST['location']);
         $req->bindParam(':update_hike', $update);
         $req->bindParam(':IDTags', $_POST['IDTags']);
-       
+
 
         $req->execute();
     }
