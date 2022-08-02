@@ -96,6 +96,14 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
                     <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
                 </p>
 
+                <?php if($hike['date'] != $hike['update_hike']) { ?>
+
+                    <p class="date">  
+                        <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike']));?></em>
+                    </p>
+
+                <?php } ?>
+
                 <p class="info">
                     Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
                     durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h

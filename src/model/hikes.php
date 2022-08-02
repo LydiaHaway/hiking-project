@@ -27,7 +27,7 @@ class Hikes extends Database
                 'elevation_gain' => $row['elevation_gain'],
                 'description' => $row['description'],
                 'location' => $row['location'],
-                'update' => $row['update'],
+                'update_hike' => $row['update_hike'],
                 'ID_tags' => $row['ID_tags'],
                 'ID_user' => $row['ID_user'],
             ];
@@ -71,7 +71,7 @@ class Hikes extends Database
                 'elevation_gain' => $row['elevation_gain'],
                 'description' => $row['description'],
                 'location' => $row['location'],
-                'update' => $row['update'],
+                'update_hike' => $row['update_hike'],
                 'ID_tags' => $row['ID_tags'],
                 'ID_user' => $row['ID_user'],
             ];
@@ -114,7 +114,7 @@ class Hikes extends Database
                 'elevation_gain' => $row['elevation_gain'],
                 'description' => $row['description'],
                 'location' => $row['location'],
-                'update' => $row['update'],
+                'update_hike' => $row['update_hike'],
                 'ID_tags' => $row['ID_tags'],
                 'ID_user' => $row['ID_user'],
             ];
@@ -152,7 +152,7 @@ class Hikes extends Database
                 'elevation_gain' => $row['elevation_gain'],
                 'description' => $row['description'],
                 'location' => $row['location'],
-                'update' => $row['update'],
+                'update_hike' => $row['update_hike'],
                 'ID_tags' => $row['ID_tags'],
                 'ID_user' => $row['ID_user'],
             ];
@@ -195,8 +195,10 @@ class Hikes extends Database
 
         $db = $this->connectDb();
 
+        $update = date("Y-m-d H:i:s");
+
         $req = $db->prepare('UPDATE hikes SET name = :name, distance = :distance, duration = :duration,
-        elevation_gain = :elevation_gain, description = :description, location = :location, ID_tags = :IDTags WHERE hikes . ID = :id');
+        elevation_gain = :elevation_gain, description = :description, location = :location, update_hike = :update_hike, ID_tags = :IDTags WHERE hikes . ID = :id');
         
         $req->bindParam(':id', $_POST["ID"]);
         $req->bindParam(':name', $_POST['name']);
@@ -205,6 +207,7 @@ class Hikes extends Database
         $req->bindParam(':elevation_gain', $_POST['elevation_gain']);
         $req->bindParam(':description', $_POST['description']);
         $req->bindParam(':location', $_POST['location']);
+        $req->bindParam(':update_hike', $update);
         $req->bindParam(':IDTags', $_POST['IDTags']);
        
 

@@ -42,6 +42,11 @@ session_start();
                     <?php echo htmlspecialchars($hike['name']); ?>
                     <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
                 </h3>
+                <?php if($hike['date'] != $hike['update_hike']) { ?>
+                        <p class="date">  
+                            <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike']));?></em>
+                        </p>
+                    <?php } ?>
 
                 <?php
                 foreach ($users->getUser($hike['ID_user']) as $key => $user) {
