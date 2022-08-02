@@ -12,7 +12,7 @@ $routes = [
         '/formulaire_hike' => '../controller/controller_form_addHikes.php',
         '/form_update' => '../controller/controller_update.php',
         '/add_tags' => '../controller/controller_add_tags.php',
-        '/profile_update' => '../controller/controller_profile_update.php',
+        '/admin' => '../controller/controller_user_control.php',
     ],
 
     'POST' => [
