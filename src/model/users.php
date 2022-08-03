@@ -76,7 +76,7 @@ class Users extends Database
 
         $db = $this->connectDb();
 
-        //$pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
+        $pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
         $req = $db->prepare(' INSERT INTO users (ID, firstname, lastname, nickname, 
         email, password, is_admin) VALUES (NULL, :firstname, :lastname, 
@@ -87,7 +87,7 @@ class Users extends Database
         $req->bindValue(':lastname', $_POST['lastname']);
         $req->bindValue(':nickname', $_POST['nickname']);
         $req->bindValue(':email', $_POST['email']);
-        $req->bindValue(':password', $_POST['password']);
+        $req->bindValue(':password', $pass);
         $req->bindValue(':is_admin', $_POST['is_admin']);
 
         $req->execute();
@@ -100,6 +100,8 @@ class Users extends Database
 
         $db = $this->connectDb();
 
+        $pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
+
         $req = $db->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname,
         nickname = :nickname, email = :email, password = :password WHERE users . ID = :id');
 
@@ -108,7 +110,7 @@ class Users extends Database
         $req->bindParam(':lastname', $_POST['lastname']);
         $req->bindParam(':nickname', $_POST['nickname']);
         $req->bindParam(':email', $_POST['email']);
-        $req->bindParam(':password', $_POST['password']);
+        $req->bindParam(':password', $pass);
 
 
         $req->execute();

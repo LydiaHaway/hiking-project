@@ -11,7 +11,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
     foreach ($users->getUsers() as $key => $user) {
         if (
             $user['email'] === $_POST['email'] &&
-            $user['password'] === $_POST['password']
+            password_verify($_POST['password'], $user['password'])
         ) {
             $_SESSION['LOGGED_USER'] = [
                 'firstname' => $user['firstname'],
@@ -124,73 +124,73 @@ if (isset($_POST['id_hike'])) {
         </a>
 
 
-            <p>
-                Voici les randonnées que vous avez créées :
-            </p>
-            <?php if (isset($validMessage)) : ?>
-                <div>
-                    <?php echo $validMessage; ?>
-                </div>
-            <?php endif; ?>
+        <p>
+            Voici les randonnées que vous avez créées :
+        </p>
+        <?php if (isset($validMessage)) : ?>
+            <div>
+                <?php echo $validMessage; ?>
+            </div>
+        <?php endif; ?>
 
-            <?php
-            foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
-            ?>
-                <form action="/profileUser" method="POST">
-                    <div class="hikes">
-                        <h1>
-                            <?php echo htmlspecialchars($hike['name']); ?>
-                        </h1>
-                        <p class="date">
-                            <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
-                        </p>
-
-                        <p class="info">
-                            Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
-                            durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
-                        </p>
-
-                <?php if ($hike['date'] != $hike['update_hike']) { ?>
-
+        <?php
+        foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
+        ?>
+            <form action="/profileUser" method="POST">
+                <div class="hikes">
+                    <h1>
+                        <?php echo htmlspecialchars($hike['name']); ?>
+                    </h1>
                     <p class="date">
-                        <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></em>
+                        <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
                     </p>
 
-                <?php } ?>
+                    <p class="info">
+                        Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                        durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+                    </p>
 
-                <p class="info">
-                    Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
-                    durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
-                </p>
-                        <p class="description">
-                            <?php echo htmlspecialchars($hike['description']); ?>
+                    <?php if ($hike['date'] != $hike['update_hike']) { ?>
+
+                        <p class="date">
+                            <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></em>
                         </p>
 
-                        <p class="location">
-                            Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
+                    <?php } ?>
+
+                    <p class="info">
+                        Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                        durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+                    </p>
+                    <p class="description">
+                        <?php echo htmlspecialchars($hike['description']); ?>
+                    </p>
+
+                    <p class="location">
+                        Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
+                    </p>
+
+                    <?php
+                    foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
+                    ?>
+
+                        <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
                         </p>
 
-                        <?php
-                        foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
-                        ?>
+                    <?php
+                    }
+                    ?>
 
-                            <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
-                            </p>
-
-                        <?php
-                        }
-                        ?>
-
-                        <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                            Modifier la randonnée
-                        </a>
-                        <input type="hidden" name="id_hike" value="<?php echo $hike['ID']; ?>" />
-                        <button class="button" type="submit">Supprimer la randonnée</button>
-                    </div>
-                </form>
-            <?php
-            }
-            ?>
+                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                        Modifier la randonnée
+                    </a>
+                    <input type="hidden" name="id_hike" value="<?php echo $hike['ID']; ?>" />
+                    <button class="button" type="submit">Supprimer la randonnée</button>
+                </div>
+            </form>
+        <?php
+        }
+        ?>
         </main>
         <?php require_once 'include/footer.php'; ?>
     <?php endif; ?>
