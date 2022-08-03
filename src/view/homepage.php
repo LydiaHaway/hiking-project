@@ -32,10 +32,6 @@ session_start();
         <br>
         <br>
 
-        <a href="/profileUser">
-            <button>profile</button>
-        </a>
-
         <?php
         foreach ($hikes->getHikes() as $key => $hike) {
         ?>
