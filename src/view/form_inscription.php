@@ -16,19 +16,19 @@ if (!empty($_POST)) {
                 $user['email'] === $_POST['email']
             ) {
                 require_once 'include/header.php';
-                echo "your email has already been used!" . '<br>';
+                echo "Votre email a déjà été utilisé" . '<br>';
             }
 
             if (
                 $user['nickname'] === $_POST['nickname']
             ) {
                 require_once 'include/header.php';
-                echo "this nickname has already been used!" . '<br>';
+                echo "Ce login a déjà été utilisé" . '<br>';
             } else {
                 $users->subscription();
 
                 require_once 'include/header.php';
-                echo "Your subscription is done!" . '<br>';
+                echo "Votre inscription est terminée !" . '<br>';
             }
         }
     }

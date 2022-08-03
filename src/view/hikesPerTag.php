@@ -21,6 +21,23 @@ session_start();
     <main>
 
         <?php
+        foreach ($tags->getListTags() as $key => $tag) {
+        ?>
+            <div class="tags">
+
+                <a class="button" href="tag?id=<?php echo htmlspecialchars($tag['ID']); ?>">
+                    <li>
+                        <?php echo htmlspecialchars($tag['name']); ?>
+                    </li>
+                </a>
+            </div>
+        <?php
+        }
+        ?>
+        </br>
+        </br>
+
+        <?php
         foreach ($hikes->getHikeByTag($_GET["id"]) as $key => $hike) {
         ?>
             <div class="hikes">
@@ -80,21 +97,7 @@ session_start();
         ?>
 
         </br>
-        <?php
-        foreach ($tags->getListTags() as $key => $tag) {
-        ?>
-            <div class="tags">
 
-                <a class="button" href="tag?id=<?php echo htmlspecialchars($tag['ID']); ?>">
-                    <li>
-                        <?php echo htmlspecialchars($tag['name']); ?>
-                    </li>
-                </a>
-            </div>
-        <?php
-        }
-        ?>
-        </br>
 
 
     </main>

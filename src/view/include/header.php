@@ -6,8 +6,8 @@
     <nav class="nav">
         <ul>
             <li><a class="button" href="tag?id=1">Hikes par tag</a></li>
-            <li><a class="button" href="form_inscription">Inscription</a></li>
             <?php if (!isset($_SESSION['LOGGED_USER'])) { ?>
+                <li><a class="button" href="form_inscription">Inscription</a></li>
                 <li><a class="button" href="formulaire_connection">Connexion</a></li>
             <?php } else { ?>
                 <li><a class="button" href="profileUser">Mon compte</a></li>

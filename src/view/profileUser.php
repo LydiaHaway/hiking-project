@@ -80,20 +80,21 @@ if (isset($_POST['id_hike'])) {
 -->
     <?php else : ?>
         <?php require_once '../view/include/header.php' ?>
+        <br>
         <h1>
             Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !
         </h1>
-
+        <br>
         <?php
         foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
         ?>
-            <h2>Informations: </h2>
+            <h2>Informations : </h2>
             <p>
-                Firstname: <?php echo htmlspecialchars($user['firstname']); ?>
+                Prénom: <?php echo htmlspecialchars($user['firstname']); ?>
             </p>
 
             <p>
-                Lastname: <?php echo htmlspecialchars($user['lastname']); ?>
+                Nom: <?php echo htmlspecialchars($user['lastname']); ?>
             </p>
 
             <p>
@@ -106,7 +107,7 @@ if (isset($_POST['id_hike'])) {
 
             <a href="/profile_update">
                 <button>
-                    modifier
+                    Modifier vos informations
                 </button>
             </a>
 
