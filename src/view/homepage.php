@@ -18,8 +18,9 @@ session_start();
 
     <main>
 
-        <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> !</h2>
+       
         <p> <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
+                <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !</h2>
                 <a class="button" href="admin">
                     <button class="btn">Utilisateurs</button>
                 </a>

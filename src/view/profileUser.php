@@ -82,7 +82,7 @@ if (isset($_POST['id_hike'])) {
         <?php require_once '../view/include/header.php' ?>
         <br>
         <h1>
-            Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !
+            Bienvenue <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> sur votre profil !
         </h1>
         <br>
         <?php

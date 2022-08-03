@@ -23,7 +23,7 @@ require_once '../view/include/header.php';
 
 </html>
 <h1>
-    Bonjour <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur votre page admin !
+    Bienvenue <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> sur votre page admin !
 </h1>
 
 <p>
