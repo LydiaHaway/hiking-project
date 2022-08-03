@@ -8,11 +8,10 @@ require_once '../model/tags.php';
 
 if (!empty($_POST)) {
     if (
-        isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["email"], $_POST["password"]) &&
-        !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["nickname"]) && !empty($_POST["email"])
-        && !empty($_POST["password"])
+        isset($_POST["name"], $_POST["distance"], $_POST["duration"], $_POST["elevation_gain"], $_POST["description"], $_POST["location"])
+        && !empty($_POST["name"]) && !empty($_POST["distance"]) && !empty($_POST["duration"]) && !empty($_POST["elevation_gain"])
+        && !empty($_POST["description"]) && !empty($_POST["location"])
     ) {
-
         $hikes->updateHike();
         echo 'Vos modifications ont été prises en compte !';
     }
@@ -74,8 +73,13 @@ if (!empty($_POST)) {
                     <input type="text" name="location" value="<?php echo htmlspecialchars($hike['location']); ?>">
                 </div>
 
+                <br>
+
                 <fieldset>
                     <legend>Veuillez sélectionner votre tag :</legend>
+
+                    <br>
+                    <br>
 
                     <?php
                     foreach ($tags->getListTags() as $key => $tag) {
@@ -89,10 +93,10 @@ if (!empty($_POST)) {
                     ?>
                 </fieldset>
 
-                <div>
-                    <input type="hidden" name="ID" value="<?php echo htmlspecialchars($hike['ID']); ?>">
 
-                </div>
+                <input type="hidden" name="ID" value="<?php echo htmlspecialchars($hike['ID']); ?>">
+
+
 
 
 
