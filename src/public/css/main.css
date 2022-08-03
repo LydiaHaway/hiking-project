@@ -145,6 +145,7 @@ table {
 html {
   /* 10px */
   font-size: 62.5%;
+  font-family: "Jura", sans-serif;
 }
 
 body {
@@ -152,30 +153,6 @@ body {
   font-size: 1.6rem;
 }
 
-/* button {
-  border-radius: 5rem;
-  border-style: hidden;
-  justify-content: space-between;
-  color: darkgreen;
-}
-
-button:hover {
-  color: white;
-  background-color: darkgreen;
-}
-
-.button {
-  color: darkgreen;
-  background-color: white;
-  border-radius: 5rem;
-  border-style: hidden;
-
-  &:hover {
-    color: white;
-    background-color: darkgreen;
-  }
-}
-*/
 button {
   color: rgb(137, 81, 38);
   padding: 0.5rem;
@@ -186,6 +163,14 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+a {
+  color: rgb(137, 81, 38);
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 2rem;
 }
 
 p {
@@ -224,6 +209,10 @@ header {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   padding: 1rem;
+}
+.logo__img:hover {
+  -webkit-filter: drop-shadow(0 0 0.75rem darkgreen);
+          filter: drop-shadow(0 0 0.75rem darkgreen);
 }
 
 .bg-banner {
