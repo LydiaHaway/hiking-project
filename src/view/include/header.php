@@ -15,6 +15,7 @@
                 <li><a class="button" href="formulaire_connection">Connexion</a></li>
             <?php } else { ?>
                 <li><a class="button" href="profileUser">Mon compte</a></li>
+                <li><a class="button" href="logout">Se déconnecter</a></li>
             <?php } ?>
         </ul>
     </nav>

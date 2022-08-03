@@ -6,30 +6,6 @@ require_once '../model/users.php';
 require_once '../model/hikes.php';
 require_once '../model/tags.php';
 
-// Validation du formulaire
-if (isset($_POST['email']) &&  isset($_POST['password'])) {
-    foreach ($users->getUsers() as $key => $user) {
-        if (
-            $user['email'] === $_POST['email'] &&
-            password_verify($_POST['password'], $user['password'])
-        ) {
-            $_SESSION['LOGGED_USER'] = [
-                'firstname' => $user['firstname'],
-                'email' => $user['email'],
-                'ID' => $user['ID'],
-                'is_admin' => $user['is_admin'],
-
-            ];
-        } else {
-            $errorMessage = sprintf(
-                'Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
-                $_POST['email'],
-                $_POST['password']
-            );
-        }
-    }
-}
-
 //Suppression d'une randonnée
 if (isset($_POST['id_hike'])) {
     $validMessage = 'Randonnée supprimée !';
@@ -49,38 +25,8 @@ if (isset($_POST['id_hike'])) {
 </head>
 
 <body>
-
-    <!--
-   Si utilisateur/trice est non identifié(e), on affiche le formulaire
--->
-    <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
-        <form action="/view/profileUser.php" method="POST">
-            <!-- si message d'erreur on l'affiche -->
-            <?php if (isset($errorMessage)) : ?>
-                <div>
-                    <?php echo $errorMessage; ?>
-                </div>
-            <?php endif; ?>
-            <div>
-                <label for="email">Email </label>
-                <input type="email" name="email">
-            </div>
-
-            <div>
-                <label for="password">Mot de passe </label>
-                <input type="password" name="password">
-            </div>
-
-            <br>
-
-            <button type="submit">Se connecter</button>
-        </form>
-        <!-- 
-    Si utilisateur/trice bien connectée on affiche un message de succès
--->
-    <?php else : ?>
-        <?php require_once '../view/include/header.php' ?>
-        <br>
+    <?php require 'include/header.php' ?>   
+    <br>
         <h1>
             Bienvenue <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> sur votre profil !
         </h1>
@@ -191,8 +137,6 @@ if (isset($_POST['id_hike'])) {
         ?>
         </main>
         <?php require_once 'include/footer.php'; ?>
-    <?php endif; ?>
-
 </body>
 
 </html>

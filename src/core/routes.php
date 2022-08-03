@@ -15,10 +15,11 @@ $routes = [
         '/admin' => '../controller/controller_user_control.php',
         '/profile_update' => '../controller/controller_profile_update.php',
         '/profileUser' => '../view/profileUser.php',
+        '/logout' => '../controller/controller_logout.php',
     ],
 
     'POST' => [
-        '/profileUser' => '../view/profileUser.php',
+        '/form_connection' => '../view/form_connection.php',
         '/form_inscription' => '../controller/controller_form_inscription.php',
         '/form_hike' => '../controller/controller_form_addHikes.php',
         '/form_update' => '../controller/controller_update.php',
