@@ -77,21 +77,6 @@ session_start();
                     <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
                     </p>
 
-                    <p class="location">
-                        Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
-                    </p>
-
-                    <?php
-                    foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
-                    ?>
-
-                        <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
-                        </p>
-
-                    <?php
-                    }
-                    ?>
-
                     <a class="button" href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                         <button>Plus d'info</button>
                     </a>
