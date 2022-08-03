@@ -13,7 +13,7 @@
 
 $nowTime = time();
 
-if(isset($_SESSION['LOGGED_USER']['firstname'])) {
+if(isset($_SESSION['LOGGED_USER'])) {
     session_destroy();
 }
 

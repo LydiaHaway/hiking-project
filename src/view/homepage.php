@@ -17,15 +17,17 @@ session_start();
     <?php require 'include/header.php' ?>
 
     <main>
-
-       
-        <p> <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
-                <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !</h2>
+    <p>
+        <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
+            <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !</h2>
+            <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") : ?>
                 <a class="button" href="admin">
                     <button class="btn">Utilisateurs</button>
                 </a>
-        </p>
-    <?php } ?>
+            <?php endif; ?>
+        <?php endif; ?>
+    </p>       
+
 
     <?php
     foreach ($tags->getListTags() as $key => $tag) {
@@ -94,15 +96,6 @@ session_start();
                     <button>Plus d'info</button>
                 </a>
 
-                <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
-
-                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                        <button>Modifier la randonnée</button>
-                    </a>
-                    <a class="button" href="*">
-                        <button>Supprimer la randonnée</button>
-                    </a>
-                <?php } ?>
             <?php } ?>
         </div>
     <?php
