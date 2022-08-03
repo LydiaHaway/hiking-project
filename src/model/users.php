@@ -77,15 +77,18 @@ class Users extends Database
         $db = $this->connectDb();
 
         $pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
+        $firstname = strip_tags($_POST['firstname']);
+        $lastname = strip_tags($_POST['lastname']);
+        $nickname = strip_tags($_POST['nickname']);
 
         $req = $db->prepare(' INSERT INTO users (ID, firstname, lastname, nickname, 
         email, password, is_admin) VALUES (NULL, :firstname, :lastname, 
         :nickname, :email, :password, :is_admin);
         ');
 
-        $req->bindValue(':firstname', $_POST['firstname']);
-        $req->bindValue(':lastname', $_POST['lastname']);
-        $req->bindValue(':nickname', $_POST['nickname']);
+        $req->bindValue(':firstname', $firstname);
+        $req->bindValue(':lastname', $lastname);
+        $req->bindValue(':nickname', $nickname);
         $req->bindValue(':email', $_POST['email']);
         $req->bindValue(':password', $pass);
         $req->bindValue(':is_admin', $_POST['is_admin']);
@@ -101,14 +104,17 @@ class Users extends Database
         $db = $this->connectDb();
 
         $pass = password_hash($_POST["password"], PASSWORD_BCRYPT);
+        $firstname = strip_tags($_POST['firstname']);
+        $lastname = strip_tags($_POST['lastname']);
+        $nickname = strip_tags($_POST['nickname']);
 
         $req = $db->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname,
         nickname = :nickname, email = :email, password = :password WHERE users . ID = :id');
 
         $req->bindParam(':id', $_POST["ID"]);
-        $req->bindParam(':firstname', $_POST['firstname']);
-        $req->bindParam(':lastname', $_POST['lastname']);
-        $req->bindParam(':nickname', $_POST['nickname']);
+        $req->bindParam(':firstname', $firstname);
+        $req->bindParam(':lastname', $lastname);
+        $req->bindParam(':nickname', $nickname);
         $req->bindParam(':email', $_POST['email']);
         $req->bindParam(':password', $pass);
 

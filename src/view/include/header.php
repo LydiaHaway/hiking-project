@@ -1,4 +1,8 @@
 <?php session_start(); ?>
+
+<head>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
 <header>
     <h1>
         <a class="logo" href="home"><img class="logo__img" src="img/logo.png" alt="Logo with a mountain & a pine tree"></a>

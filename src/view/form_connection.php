@@ -15,6 +15,8 @@ session_start();
 
 <body>
 
+    <?php require 'include/header.php' ?>
+
     <main>
 
         <h1>Connectez vous !</h1>
@@ -40,4 +42,3 @@ session_start();
 </body>
 
 </html>
-

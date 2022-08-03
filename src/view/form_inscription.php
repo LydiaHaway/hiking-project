@@ -16,19 +16,27 @@ if (!empty($_POST)) {
                 $user['email'] === $_POST['email']
             ) {
                 require_once 'include/header.php';
-                echo "Votre email a déjà été utilisé" . '<br>';
+                echo sprintf(
+                    ' Votre email a déjà été utilisé ! <br>'
+                );
             }
 
             if (
                 $user['nickname'] === $_POST['nickname']
             ) {
                 require_once 'include/header.php';
-                echo "Ce login a déjà été utilisé" . '<br>';
-            } else {
+                echo sprintf(
+                    ' Ce login a déjà été utilisé ! <br>'
+                );
+            }
+            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 $users->subscription();
-
-                require_once 'include/header.php';
-                echo "Votre inscription est terminée !" . '<br>';
+                header("Location: formulaire_connection");
+            } else {
+                echo sprintf(
+                    " Votre email n'est pas valide ! "
+                );
+                break;
             }
         }
     }
