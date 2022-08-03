@@ -7,13 +7,18 @@ require_once '../model/users.php';
 require_once '../model/tags.php';
 
 if (!empty($_POST)) {
+    if (
+        isset($_POST["name"], $_POST["distance"], $_POST["duration"], $_POST["elevation_gain"], $_POST["description"], $_POST["location"])
+        && !empty($_POST["name"]) && !empty($_POST["distance"]) && !empty($_POST["duration"]) && !empty($_POST["elevation_gain"])
+        && !empty($_POST["description"]) && !empty($_POST["location"])
+    ) {
+        $hikes->addHike();
+        echo "Votre randonnée a été ajoutée!" . '<br>';
 
-    $hikes->addHike();
-    echo "Votre randonnée a été ajoutée!" . '<br>';
-
-    echo '<a href="/profileUser">
+        echo '<a href="/profileUser">
     <button>profile</button>
 </a>';
+    }
 }
 
 ?>
