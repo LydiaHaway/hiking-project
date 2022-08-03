@@ -74,8 +74,13 @@ if (!empty($_POST)) {
                     <input type="text" name="location" value="<?php echo htmlspecialchars($hike['location']); ?>">
                 </div>
 
+                <br>
+
                 <fieldset>
                     <legend>Veuillez sélectionner votre tag :</legend>
+
+                    <br>
+                    <br>
 
                     <?php
                     foreach ($tags->getListTags() as $key => $tag) {
@@ -89,10 +94,10 @@ if (!empty($_POST)) {
                     ?>
                 </fieldset>
 
-                <div>
-                    <input type="hidden" name="ID" value="<?php echo htmlspecialchars($hike['ID']); ?>">
 
-                </div>
+                <input type="hidden" name="ID" value="<?php echo htmlspecialchars($hike['ID']); ?>">
+
+
 
 
 
