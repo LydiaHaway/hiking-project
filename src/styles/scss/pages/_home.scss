@@ -10,11 +10,13 @@ div {
   border-radius: 1rem;
   margin: 0.4rem;
   margin-top: 1.4rem;
-  padding: 1.4rem;
   @include medium-typo;
   &.tags {
     border: hidden;
-    margin-top: 0.1rem;
+    margin-top: -1rem;
+  }
+  &.hikes {
+    padding: 2.4rem;
   }
 }
 
