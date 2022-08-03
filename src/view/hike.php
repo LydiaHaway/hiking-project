@@ -14,13 +14,7 @@ session_start();
 </head>
 
 <body>
-
-    <section class="logo-banner">
-        <h1>
-            <img src="img/logo.png" alt="Logo with a mountain and a pine tree">
-        </h1>
-        <?php require 'include/header.php' ?>
-    </section>
+    <?php require 'include/header.php' ?>
     <main>
 
         <?php

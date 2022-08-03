@@ -14,18 +14,7 @@ session_start();
 </head>
 
 <body>
-
-    <section class="header-banner">
-
-        <!-- A modif dès que les autres pages sont prêtes -->
-
-        <a class="button" href="home"><?php require 'include/header.php' ?></a>
-        <a class="button" href="home"><?php require 'include/header.php' ?></a>
-        <img src="img/logo.png" alt="Logo with a mountain & a pine tree">
-        <a class="button" href="home"><?php require 'include/header.php' ?></a>
-        <a class="button" href="home"><?php require 'include/header.php' ?></a>
-
-    </section>
+    <?php require 'include/header.php' ?>
 
 
 
@@ -52,7 +41,9 @@ session_start();
         ?>
             <div class="hikes">
 
-                <h3 class="title">
+                <img class="image-hike" src="img/foret.jpeg" alt="A forest" />
+
+                <h3 class=" title">
                     <?php echo htmlspecialchars($hike['name']); ?>
                     <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
                 </h3>
@@ -69,9 +60,25 @@ session_start();
                     <p class="user"> Par <?php echo htmlspecialchars($user['nickname']); ?>
                     </p>
 
-                    <p class="info">
-                        Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
-                        durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+                <?php
+                }
+                ?>
+
+                <p class="info">
+                    Distance: <?php echo htmlspecialchars($hike['distance']); ?> km,
+                    dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                    durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+                </p>
+
+                <p class="location">
+                    Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
+                </p>
+
+                <?php
+                foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
+                ?>
+
+                    <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
                     </p>
 
                     <p class="location">
@@ -127,9 +134,7 @@ session_start();
 
     </main>
 
-    <?php require_once 'include/footer.php'
-
-    ?>
+    <?php require_once 'include/footer.php'; ?>
 
 
 </body>

@@ -29,6 +29,12 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
         }
     }
 }
+
+//Suppression d'une randonnée
+if (isset($_POST['id_hike'])) {
+    $validMessage = 'Randonnée supprimée !';
+    $hikes->removeHike();
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +44,8 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <title>Mon profil</title>
 </head>
 
 <body>
@@ -117,21 +124,31 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
         </a>
 
 
-        <p>
-            Voici les randonnées que vous avez créées :
-        </p>
+            <p>
+                Voici les randonnées que vous avez créées :
+            </p>
+            <?php if (isset($validMessage)) : ?>
+                <div>
+                    <?php echo $validMessage; ?>
+                </div>
+            <?php endif; ?>
 
-        <?php
-        foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
-        ?>
+            <?php
+            foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
+            ?>
+                <form action="/profileUser" method="POST">
+                    <div class="hikes">
+                        <h1>
+                            <?php echo htmlspecialchars($hike['name']); ?>
+                        </h1>
+                        <p class="date">
+                            <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
+                        </p>
 
-            <div class="hikes">
-                <h1>
-                    <?php echo htmlspecialchars($hike['name']); ?>
-                </h1>
-                <p class="date">
-                    <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
-                </p>
+                        <p class="info">
+                            Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                            durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+                        </p>
 
                 <?php if ($hike['date'] != $hike['update_hike']) { ?>
 
@@ -146,35 +163,33 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
                     durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
                 </p>
 
-                <p class="description">
-                    <?php echo htmlspecialchars($hike['description']); ?>
-                </p>
+                        <p class="location">
+                            Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
+                        </p>
 
-                <p class="location">
-                    Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
-                </p>
+                        <?php
+                        foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
+                        ?>
 
-                <?php
-                foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
-                ?>
+                            <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
+                            </p>
 
-                    <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
-                    </p>
+                        <?php
+                        }
+                        ?>
 
-                <?php
-                }
-                ?>
-
-                <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                    <button>Modifier la randonnée</button>
-                </a>
-                <a class="button" href="*">
-                    <button>Supprimer la randonnée</button>
-                </a>
-            </div>
-        <?php
-        }
-        ?>
+                        <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                            Modifier la randonnée
+                        </a>
+                        <input type="hidden" name="id_hike" value="<?php echo $hike['ID']; ?>" />
+                        <button class="button" type="submit">Supprimer la randonnée</button>
+                    </div>
+                </form>
+            <?php
+            }
+            ?>
+        </main>
+        <?php require_once 'include/footer.php'; ?>
     <?php endif; ?>
 
 </body>

@@ -191,6 +191,20 @@ class Hikes extends Database
     }
 
 
+    // insert hike
+
+    public function removeHike()
+    {
+
+        $db = $this->connectDb();
+        $id = $_POST['id_hike'];
+
+        $req = $db->prepare('DELETE FROM hikes WHERE ID = '.$id);
+
+        $req->execute();
+    }
+
+
     //update hike
 
     public function updateHike()
