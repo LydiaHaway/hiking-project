@@ -7,10 +7,18 @@ require_once '../model/hikes.php';
 require_once '../model/tags.php';
 
 if (!empty($_POST)) {
-//var_dump($_POST);
-    $hikes->updateHike();
-    echo 'Vos modifications ont été prises en compte !';
+    if (
+        isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["email"], $_POST["password"]) &&
+        !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["nickname"]) && !empty($_POST["email"])
+        && !empty($_POST["password"])
+    ) {
+
+        $hikes->updateHike();
+        echo 'Vos modifications ont été prises en compte !';
+    }
 }
+
+
 
 ?>
 

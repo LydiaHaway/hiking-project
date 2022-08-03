@@ -60,7 +60,7 @@ if (!empty($_POST)) {
             </div>
 
             <div>
-                <label for="location">Commune </label>
+                <label for="location">Localisation </label>
                 <input type="text" name="location">
             </div>
 
