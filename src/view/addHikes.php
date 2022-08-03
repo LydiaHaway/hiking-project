@@ -63,9 +63,14 @@ if (!empty($_POST)) {
                 <label for="location">Localisation </label>
                 <input type="text" name="location">
             </div>
+            <br>
 
             <fieldset>
+
                 <legend>Veuillez sélectionner votre tag :</legend>
+
+                <br>
+                <br>
 
                 <?php
                 foreach ($tags->getListTags() as $key => $tag) {
