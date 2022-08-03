@@ -150,6 +150,7 @@ if (isset($_POST['id_hike'])) {
                             durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
                         </p>
 
+<<<<<<< HEAD
                 <?php if ($hike['date'] != $hike['update_hike']) { ?>
 
                     <p class="date">
@@ -162,6 +163,11 @@ if (isset($_POST['id_hike'])) {
                     Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
                     durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
                 </p>
+=======
+                        <p class="description">
+                            <?php echo htmlspecialchars($hike['description']); ?>
+                        </p>
+>>>>>>> latifa
 
                         <p class="location">
                             Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
