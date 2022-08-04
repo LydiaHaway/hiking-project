@@ -58,8 +58,7 @@ require_once '../model/tags.php';
 
                 <div>
                     <label for="illustration">Illustration </label>
-                    <p>Vous pouvez utiliser cet hebergeur et ajouter ici le lien direct</p>
-                    <a href="https://postimages.org/">Cliquer ici</a>
+                    <p>Vous pouvez utiliser cet hebergeur et ajouter ici le lien direct <a href="https://postimages.org/">Cliquer ici</a> </p>
                     <input type="text" name="illustration">
                 </div>
                 <br>
