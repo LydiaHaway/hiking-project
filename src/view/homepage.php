@@ -1,10 +1,5 @@
 <?php
 session_start();
-
-//Suppression d'une randonnée
-if (isset($_GET['id'])) {
-    $hikes->removeHike($_GET['id']);
-}
 ?>
 
 <!DOCTYPE html>

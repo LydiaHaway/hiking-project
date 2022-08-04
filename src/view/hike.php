@@ -87,9 +87,18 @@ session_start();
                     <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                         <button>Modifier la randonnée</button>
                     </a>
-                    <a class="button" href="home?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                        <button>Supprimer la randonnée</button>
+                    <a class="button">
+                        <button onclick="deleteHike();">Supprimer la randonnée</button>
                     </a>
+
+                    <script>
+                    //show a confirmation and redirect to the delete profile script
+                        function deleteHike() {
+                            if (confirm("Voulez vous vraiment supprimer la randonnée ?")) {
+                                location.href = 'deleteHike_Hike?id=<?php echo htmlspecialchars($hike['ID']); ?>';
+                            }
+                        }
+                    </script>
                 <?php } ?>
             </div>
         <?php

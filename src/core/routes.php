@@ -18,6 +18,9 @@ $routes = [
         '/profile_update' => '../controller/controller_profile_update.php',
         '/profileUser' => '../view/profileUser.php',
         '/logout' => '../controller/controller_logout.php',
+        '/deleteHike_Hike' => '../model/deleteHike_Hike.php',
+        '/deleteHike_Profil' => '../model/deleteHike_Profil.php',
+        '/deleteUser' => '../model/deleteUser.php',
     ],
 
     'POST' => [

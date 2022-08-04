@@ -5,11 +5,6 @@ session_start();
 require_once '../model/users.php';
 require_once '../view/include/header.php';
 
-//Suppression d'un utilisateur
-if (isset($_GET['id'])) {
-    $users->removeUser($_GET['id']);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +52,18 @@ foreach ($users->getUsers() as $key => $user) {
             <?php echo htmlspecialchars($user['email']); ?>
         </p>
 
-        <a class="button" href="admin?id=<?php echo htmlspecialchars($user['ID']); ?>">
-            <button>Supprimer l'utilisateur</button>
+        <a class="button">
+            <button onclick="deleteUser();">Supprimer l'utilisateur</button>
         </a>
+
+        <script>
+        //show a confirmation and redirect to the delete profile script
+            function deleteUser() {
+                if (confirm("Voulez vous vraiment supprimer l'utilisateur ?")) {
+                    location.href = 'deleteUser?id=<?php echo htmlspecialchars($user['ID']); ?>';
+                }
+            }
+        </script>
     </div>
 <?php
 }

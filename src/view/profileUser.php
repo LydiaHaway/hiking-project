@@ -135,9 +135,18 @@ if (isset($_GET['id'])) {
                 <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                     Modifier la randonnée
                 </a>
-                <a class="button" href="profileUser?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                    <button>Supprimer la randonnée</button>
-                </a>
+                <a class="button">
+                        <button onclick="deleteHike();">Supprimer la randonnée</button>
+                    </a>
+
+                    <script>
+                    //show a confirmation and redirect to the delete profile script
+                        function deleteHike() {
+                            if (confirm("Voulez vous vraiment supprimer la randonnée ?")) {
+                                location.href = 'deleteHike_Profil?id=<?php echo htmlspecialchars($hike['ID']); ?>';
+                            }
+                        }
+                    </script>
             </div>
     <?php
     }
