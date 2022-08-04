@@ -14,7 +14,7 @@ if (!empty($_POST)) {
         && !empty($_POST["password"])
     ) {
         $users->updateUser();
-        echo 'Vos modifications ont été prises en compte !';
+        header("Location: profileUser");
     }
 }
 

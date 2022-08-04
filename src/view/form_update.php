@@ -13,7 +13,7 @@ if (!empty($_POST)) {
         && !empty($_POST["description"]) && !empty($_POST["location"])
     ) {
         $hikes->updateHike();
-        echo 'Vos modifications ont été prises en compte !';
+        header("Location: profileUser");
     }
 }
 
