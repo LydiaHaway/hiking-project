@@ -121,6 +121,42 @@ class Users extends Database
 
         $req->execute();
     }
+
+    public function getUserNickname($nickname)
+    {
+
+        $nickname;
+
+        $db = $this->connectDb();
+
+        $req = $db->prepare('SELECT *
+        FROM users
+        WHERE nickname= :nickname');
+
+
+        $req->bindValue(':nickname', $nickname);
+
+        $req->execute();
+
+        $users = [];
+
+        while (($row = $req->fetch())) {
+            $user = [
+                'ID' => $row['ID'],
+                'firstname' => $row['firstname'],
+                'lastname' => $row['lastname'],
+                'nickname' => $row['nickname'],
+                'email' => $row['email'],
+                'password' => $row['password'],
+                'is_admin' => $row['is_admin'],
+            ];
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+
 }
 
 $users = new Users();

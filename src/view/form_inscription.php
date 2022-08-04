@@ -1,47 +1,3 @@
-<?php
-
-session_start();
-
-require_once '../model/users.php';
-
-if (!empty($_POST)) {
-
-    if (
-        isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["email"], $_POST["password"]) &&
-        !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["nickname"]) && !empty($_POST["email"])
-        && !empty($_POST["password"])
-    ) {
-        foreach ($users->getUsers() as $key => $user) {
-            if (
-                $user['email'] === $_POST['email']
-            ) {
-                require_once 'include/header.php';
-                echo
-                ' Votre email a déjà été utilisé ! <br>';
-            }
-
-            if (
-                $user['nickname'] === $_POST['nickname']
-            ) {
-                require_once 'include/header.php';
-                echo
-                ' Ce login a déjà été utilisé ! <br>';
-            }
-            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                $users->subscription();
-                header("Location: formulaire_connection");
-            } else {
-                echo
-                " Votre email n'est pas valide ! ";
-                break;
-            }
-        }
-    }
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,13 +10,6 @@ if (!empty($_POST)) {
 </head>
 
 <body>
-
-    <?php require 'include/header.php' ?>
-
-    <main>
-
-        <h1>Inscrivez vous !</h1>
-
         <form method="POST" action="form_inscription">
             <div>
                 <label for="firstname">Prénom </label>
@@ -93,9 +42,6 @@ if (!empty($_POST)) {
 
             <button type="submit">S'inscrire</button>
         </form>
-
-    </main>
-
 </body>
 
 </html>
