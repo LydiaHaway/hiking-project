@@ -109,7 +109,7 @@ if (isset($_GET['id'])) {
                 <?php } ?>
 
                 <p class="info">
-                    Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                    Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelé positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
                     durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
                 </p>
 
