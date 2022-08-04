@@ -17,16 +17,16 @@ session_start();
     <?php require 'include/header.php' ?>
 
     <main>
-    <p>
-        <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
-            <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !</h2>
-            <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") : ?>
-                <a class="button" href="admin">
-                    <button class="btn">Utilisateurs</button>
-                </a>
-            <?php endif; ?>
+        <p>
+            <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
+        <h2>Bonjour, <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> et bienvenue sur le site !</h2>
+        <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") : ?>
+            <a class="button" href="admin">
+                <button class="btn">Utilisateurs</button>
+            </a>
         <?php endif; ?>
-    </p>       
+    <?php endif; ?>
+    </p>
 
 
     <?php
@@ -52,7 +52,14 @@ session_start();
     ?>
         <div class="hikes">
 
-            <img class="image-hike" src="img/foret.jpeg" alt="A forest" />
+            <?php
+
+            if ($hike["illustration"] != NULL) {
+            ?>
+                <img class="image-hike" src="<?php echo htmlspecialchars($hike['illustration']); ?>" alt="illustration" />
+            <?php
+            }
+            ?>
 
             <h3 class="title">
                 <?php echo htmlspecialchars($hike['name']); ?>

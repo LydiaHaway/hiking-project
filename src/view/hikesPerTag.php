@@ -42,6 +42,15 @@ session_start();
         ?>
             <div class="hikes">
 
+                <?php
+
+                if ($hike["illustration"] != NULL) {
+                ?>
+                    <img class="image-hike" src="<?php echo htmlspecialchars($hike['illustration']); ?>" alt="illustration" />
+                <?php
+                }
+                ?>
+
                 <h3 class="title">
                     <?php echo htmlspecialchars($hike['name']); ?>
                     <em>, le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>

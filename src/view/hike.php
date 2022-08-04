@@ -21,6 +21,16 @@ session_start();
         foreach ($hikes->getHike($_GET["id"]) as $key => $hike) {
         ?>
             <div class="hikes">
+
+                <?php
+
+                if ($hike["illustration"] != NULL) {
+                ?>
+                    <img class="image-hike" src="<?php echo htmlspecialchars($hike['illustration']); ?>" alt="illustration" />
+                <?php
+                }
+                ?>
+
                 <h1>
                     <?php echo htmlspecialchars($hike['name']); ?>
                 </h1>

@@ -25,118 +25,127 @@ if (isset($_POST['id_hike'])) {
 </head>
 
 <body>
-    <?php require 'include/header.php' ?>   
+    <?php require 'include/header.php' ?>
     <br>
-        <h1>
-            Bienvenue <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> sur votre profil !
-        </h1>
-        <br>
-        <?php
-        foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
-        ?>
-            <h2>Informations : </h2>
-            <p>
-                Prénom: <?php echo htmlspecialchars($user['firstname']); ?>
-            </p>
-
-            <p>
-                Nom: <?php echo htmlspecialchars($user['lastname']); ?>
-            </p>
-
-            <p>
-                Login: <?php echo htmlspecialchars($user['nickname']); ?>
-            </p>
-
-            <p>
-                Email: <?php echo htmlspecialchars($user['email']); ?>
-            </p>
-
-            <a href="/profile_update">
-                <button>
-                    Modifier vos informations
-                </button>
-            </a>
-
-            <br>
-            <br>
-
-        <?php
-        }
-        ?>
-
-
-
-        <a class="button" href="formulaire_hike">
-            <button>Ajouter une randonnée</button>
-        </a>
-
+    <h1>
+        Bienvenue <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> sur votre profil !
+    </h1>
+    <br>
+    <?php
+    foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
+    ?>
+        <h2>Informations : </h2>
+        <p>
+            Prénom: <?php echo htmlspecialchars($user['firstname']); ?>
+        </p>
 
         <p>
-            Voici les randonnées que vous avez créées :
+            Nom: <?php echo htmlspecialchars($user['lastname']); ?>
         </p>
-        <?php if (isset($validMessage)) : ?>
-            <div>
-                <?php echo $validMessage; ?>
-            </div>
-        <?php endif; ?>
 
-        <?php
-        foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
-        ?>
-            <form action="/profileUser" method="POST">
-                <div class="hikes">
-                    <h1>
-                        <?php echo htmlspecialchars($hike['name']); ?>
-                    </h1>
+        <p>
+            Login: <?php echo htmlspecialchars($user['nickname']); ?>
+        </p>
+
+        <p>
+            Email: <?php echo htmlspecialchars($user['email']); ?>
+        </p>
+
+        <a href="/profile_update">
+            <button>
+                Modifier vos informations
+            </button>
+        </a>
+
+        <br>
+        <br>
+
+    <?php
+    }
+    ?>
+
+
+
+    <a class="button" href="formulaire_hike">
+        <button>Ajouter une randonnée</button>
+    </a>
+
+
+    <p>
+        Voici les randonnées que vous avez créées :
+    </p>
+    <?php if (isset($validMessage)) : ?>
+        <div>
+            <?php echo $validMessage; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
+    ?>
+        <form action="/profileUser" method="POST">
+            <div class="hikes">
+
+                <?php
+
+                if ($hike["illustration"] != NULL) {
+                ?>
+                    <img class="image-hike" src="<?php echo htmlspecialchars($hike['illustration']); ?>" alt="illustration" />
+                <?php
+                }
+                ?>
+
+                <h1>
+                    <?php echo htmlspecialchars($hike['name']); ?>
+                </h1>
+                <p class="date">
+                    <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
+                </p>
+
+                <?php if ($hike['date'] != $hike['update_hike']) { ?>
+
                     <p class="date">
-                        <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
+                        <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></em>
                     </p>
 
-                    <p class="info">
-                        Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
-                        durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+                <?php } ?>
+
+                <p class="info">
+                    Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelée positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
+                    durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
+                </p>
+
+                <p class="description">
+                    <?php echo htmlspecialchars($hike['description']); ?>
+                </p>
+
+                <p class="location">
+                    Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
+                </p>
+
+                <?php
+                foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
+                ?>
+
+                    <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
                     </p>
 
-                    <?php if ($hike['date'] != $hike['update_hike']) { ?>
+                <?php
+                }
+                ?>
 
-                        <p class="date">
-                            <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></em>
-                        </p>
-
-                    <?php } ?>
-
-
-                    <p class="description">
-                        <?php echo htmlspecialchars($hike['description']); ?>
-                    </p>
-
-                    <p class="location">
-                        Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
-                    </p>
-
-                    <?php
-                    foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
-                    ?>
-
-                        <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
-                        </p>
-
-                    <?php
-                    }
-                    ?>
-
-                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                        Modifier la randonnée
-                    </a>
-                    <input type="hidden" name="id_hike" value="<?php echo $hike['ID']; ?>" />
-                    <button class="button" type="submit">Supprimer la randonnée</button>
-                </div>
-            </form>
-        <?php
-        }
-        ?>
-        </main>
-        <?php require_once 'include/footer.php'; ?>
+                <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                    Modifier la randonnée
+                </a>
+                <input type="hidden" name="id_hike" value="<?php echo $hike['ID']; ?>" />
+                <button class="button" type="submit">Supprimer la randonnée</button>
+            </div>
+        </form>
+    <?php
+    }
+    ?>
+    </main>
+    <?php require_once 'include/footer.php'; ?>
 </body>
 
 </html>

@@ -73,6 +73,13 @@ if (!empty($_POST)) {
                     <input type="text" name="location" value="<?php echo htmlspecialchars($hike['location']); ?>">
                 </div>
 
+                <div>
+                    <label for="illustration">Illustration </label>
+                    <p>Vous pouvez utiliser cet hebergeur et ajouter ici le lien direct</p>
+                    <a href="https://postimages.org/">Cliquer ici</a>
+                    <input type="text" name="illustration">
+                </div>
+
                 <br>
 
                 <fieldset>
