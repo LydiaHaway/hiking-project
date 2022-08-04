@@ -65,7 +65,7 @@ if (isset($_GET['id'])) {
 
 
 
-    <a class="button" href="formulaire_hike">
+    <a class="button" href="form_hike">
         <button>Ajouter une randonnée</button>
     </a>
 
