@@ -76,7 +76,7 @@ if (!empty($_POST)) {
                 <div>
                     <label for="illustration">Illustration </label>
                     <p>Vous pouvez utiliser cet hebergeur et ajouter ici le lien direct <a href="https://postimages.org/" target="_blank">Cliquer ici</a> </p>
-                    <input type="text" name="illustration">
+                    <input type="text" name="illustration" value="<?php echo htmlspecialchars($hike['illustration']); ?>">
                 </div>
 
                 <br>
