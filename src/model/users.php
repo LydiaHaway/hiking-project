@@ -122,6 +122,23 @@ class Users extends Database
         $req->execute();
     }
 
+
+    // delete user
+
+    public function removeUser(int $id)
+    {
+
+        $db = $this->connectDb();
+        $id;
+
+        $req = $db->prepare('DELETE FROM users WHERE users . ID = :id');
+
+        $req->bindParam(':id', $id);
+
+        $req->execute();
+    }
+
+
     public function getUserNickname($nickname)
     {
 

@@ -202,13 +202,15 @@ class Hikes extends Database
 
     // delete hike
 
-    public function removeHike()
+    public function removeHike(int $id)
     {
 
         $db = $this->connectDb();
-        $id = $_POST['id_hike'];
+        $id;
 
-        $req = $db->prepare('DELETE FROM hikes WHERE ID = ' . $id);
+        $req = $db->prepare('DELETE FROM hikes WHERE hikes . ID = :id');
+
+        $req->bindParam(':id', $id);
 
         $req->execute();
     }

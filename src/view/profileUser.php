@@ -7,9 +7,8 @@ require_once '../model/hikes.php';
 require_once '../model/tags.php';
 
 //Suppression d'une randonnée
-if (isset($_POST['id_hike'])) {
-    $validMessage = 'Randonnée supprimée !';
-    $hikes->removeHike();
+if (isset($_GET['id'])) {
+    $hikes->removeHike($_GET['id']);
 }
 ?>
 
@@ -83,7 +82,6 @@ if (isset($_POST['id_hike'])) {
     <?php
     foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
     ?>
-        <form action="/profileUser" method="POST">
             <div class="hikes">
 
                 <?php
@@ -137,10 +135,10 @@ if (isset($_POST['id_hike'])) {
                 <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                     Modifier la randonnée
                 </a>
-                <input type="hidden" name="id_hike" value="<?php echo $hike['ID']; ?>" />
-                <button class="button" type="submit">Supprimer la randonnée</button>
+                <a class="button" href="profileUser?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                    <button>Supprimer la randonnée</button>
+                </a>
             </div>
-        </form>
     <?php
     }
     ?>

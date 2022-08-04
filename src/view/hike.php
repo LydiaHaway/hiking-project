@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +87,7 @@ session_start();
                     <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                         <button>Modifier la randonnée</button>
                     </a>
-                    <a class="button" href="*">
+                    <a class="button" href="home?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                         <button>Supprimer la randonnée</button>
                     </a>
                 <?php } ?>

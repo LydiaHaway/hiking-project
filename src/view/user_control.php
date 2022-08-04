@@ -5,6 +5,11 @@ session_start();
 require_once '../model/users.php';
 require_once '../view/include/header.php';
 
+//Suppression d'un utilisateur
+if (isset($_GET['id'])) {
+    $users->removeUser($_GET['id']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +57,7 @@ foreach ($users->getUsers() as $key => $user) {
             <?php echo htmlspecialchars($user['email']); ?>
         </p>
 
-        <a class="button" href="*">
+        <a class="button" href="admin?id=<?php echo htmlspecialchars($user['ID']); ?>">
             <button>Supprimer l'utilisateur</button>
         </a>
     </div>
