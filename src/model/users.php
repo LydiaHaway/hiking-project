@@ -99,7 +99,7 @@ class Users extends Database
 
             $req->execute();
         } catch (PDOException $e) {
-            echo 'Cet email ou login existe déjà ! ';
+            echo ' <p> Cet email ou login existe déjà ! </p>';
             require_once '../view/form_inscription.php';
             exit;
         }
