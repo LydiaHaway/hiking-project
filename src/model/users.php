@@ -81,19 +81,29 @@ class Users extends Database
         $lastname = strip_tags($_POST['lastname']);
         $nickname = strip_tags($_POST['nickname']);
 
-        $req = $db->prepare(' INSERT INTO users (ID, firstname, lastname, nickname, 
+        try {
+            $req = $db->prepare(' INSERT INTO users (ID, firstname, lastname, nickname, 
         email, password, is_admin) VALUES (NULL, :firstname, :lastname, 
-        :nickname, :email, :password, :is_admin);
+        :nickname, :email, :password, :is_admin)
         ');
 
-        $req->bindValue(':firstname', $firstname);
-        $req->bindValue(':lastname', $lastname);
-        $req->bindValue(':nickname', $nickname);
-        $req->bindValue(':email', $_POST['email']);
-        $req->bindValue(':password', $pass);
-        $req->bindValue(':is_admin', $_POST['is_admin']);
+            //print_r($db->errorInfo());
 
-        $req->execute();
+
+            $req->bindValue(':firstname', $firstname);
+            $req->bindValue(':lastname', $lastname);
+            $req->bindValue(':nickname', $nickname);
+            $req->bindValue(':email', $_POST['email']);
+            $req->bindValue(':password', $pass);
+            $req->bindValue(':is_admin', $_POST['is_admin']);
+
+            $req->execute();
+        } catch (PDOException $e) {
+            //header("Location: formulaire_inscription");
+            echo 'Cet email ou login existe déjà ! ';
+            require_once '../view/form_inscription.php';
+            exit;
+        }
     }
 
     // update User 
@@ -138,6 +148,8 @@ class Users extends Database
         $req->execute();
     }
 
+    // Get user by Nickname
+
 
     public function getUserNickname($nickname)
     {
@@ -173,7 +185,6 @@ class Users extends Database
 
         return $users;
     }
-
 }
 
 $users = new Users();

@@ -23,39 +23,33 @@ require_once '../model/users.php';
     <main>
 
         <h1>Inscrivez vous !</h1>
-    <?php if (empty($_POST)) : ?>
-        <?php require_once '../view/form_inscription.php';?>
-    <?php else : ?>
-        <?php if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["email"], $_POST["password"]) && !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["nickname"]) && !empty($_POST["email"]) && !empty($_POST["password"])) :?>
-            <?php if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) : ?>
-                <?php foreach ($users->getUsers() as $key => $user) { ?>
-                    <?php if (($user['email'] === $_POST['email']) || ($user['nickname'] === $_POST['nickname'])) :?>
-                        <p>Votre email ou votre login sont déjà utilisés !</p> 
-                        <?php require_once '../view/form_inscription.php';?>
-                    <?php else :?>
-                        <?php
-                            $users->subscription();
-                            foreach ($users->getUserNickname($_POST['nickname']) as $key => $user) {
-                                $_SESSION['LOGGED_USER'] = [
-                                    'firstname' => $user['firstname'],
-                                    'email' => $user['email'],
-                                    'ID' => $user['ID'],
-                                    'is_admin' => $user['is_admin'],
-                                ];
-                            }
-                            header("Location: home");
-                        ?>
-                    <?php endif; ?>
-                <?php } ?>
-            <?php else :?>
-                <p>Votre email n'est pas valide !</p>
-                <?php require_once '../view/form_inscription.php';?>
+        <?php if (empty($_POST)) : ?>
+            <?php require_once '../view/form_inscription.php'; ?>
+        <?php else : ?>
+            <?php if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["email"], $_POST["password"]) && !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["nickname"]) && !empty($_POST["email"]) && !empty($_POST["password"])) : ?>
+                <?php if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) : ?>
+                    <?php
+                    $users->subscription();
+                    foreach ($users->getUserNickname($_POST['nickname']) as $key => $users) {
+                        $_SESSION['LOGGED_USER'] = [
+                            'firstname' => $users['firstname'],
+                            'email' => $users['email'],
+                            'ID' => $users['ID'],
+                            'is_admin' => $users['is_admin'],
+                        ];
+                    }
+                    header("Location: home");
+                    ?>
+
+                <?php else : ?>
+                    <p>Votre email n'est pas valide !</p>
+                    <?php require_once '../view/form_inscription.php'; ?>
+                <?php endif; ?>
+            <?php else : ?>
+                <p>Le formulaire d'inscription doit être rempli avant d'être envoyé !</p>
+                <?php require_once '../view/form_inscription.php'; ?>
             <?php endif; ?>
-        <?php else : ?> 
-            <p>Le formulaire d'inscription doit être rempli avant d'être envoyé !</p>  
-            <?php require_once '../view/form_inscription.php';?>
-        <?php endif; ?>    
-    <?php endif; ?> 
+        <?php endif; ?>
 
     </main>
 
