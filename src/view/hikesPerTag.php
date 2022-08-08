@@ -20,26 +20,26 @@ session_start();
 
     <main>
         <div class="container">
-        <ul class="tags">
-            <li>Tags : </span>
-            <?php
-            foreach ($tags->getListTags() as $key => $tag) {
-            ?>
+            <ul class="tags">
+                <li>Tags : </span>
+                    <?php
+                    foreach ($tags->getListTags() as $key => $tag) {
+                    ?>
                 <li>
                     <a class="tags__link" href="tag?id=<?php echo htmlspecialchars($tag['ID']); ?>">
-                            <?php echo htmlspecialchars($tag['name']); ?>
+                        <?php echo htmlspecialchars($tag['name']); ?>
                     </a>
                 </li>
             <?php
-            }
+                    }
             ?>
-        </ul>
-        <div class="hikes">
-            <?php
-            foreach ($hikes->getHikeByTag($_GET["id"]) as $key => $hike) {
-                include 'include/hike.php'; 
-            }
-            ?>
+            </ul>
+            <div class="hikes">
+                <?php
+                foreach ($hikes->getHikeByTag($_GET["id"]) as $key => $hike) {
+                    include 'include/hikePerTag.php';
+                }
+                ?>
             </div>
         </div>
     </main>
