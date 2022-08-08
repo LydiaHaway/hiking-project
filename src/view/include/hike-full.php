@@ -62,26 +62,29 @@
                             </li>
                 </div>
                 <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
-                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                        <button>Modifier la randonnée</button>
-                    </a>
-                    <a class="button">
-                        <button onclick="deleteHike();">Supprimer la randonnée</button>
-                    </a>
+                    <li>
+                        <a class="tags__link" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                            <button>Modifier la randonnée</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tags__link">
+                            <button onclick="deleteHike();">Supprimer la randonnée</button>
+                        </a>
 
-                    <script>
-                        //show a confirmation and redirect to the delete profile script
-                        function deleteHike() {
-                            if (confirm("Voulez vous vraiment supprimer la randonnée ?")) {
-                                location.href = 'deleteHike_Hike?id=<?php echo htmlspecialchars($hike['ID']); ?>';
+                        <script>
+                            //show a confirmation and redirect to the delete profile script
+                            function deleteHike() {
+                                if (confirm("Voulez vous vraiment supprimer la randonnée ?")) {
+                                    location.href = 'deleteHike_Hike?id=<?php echo htmlspecialchars($hike['ID']); ?>';
+                                }
                             }
-                        }
-                    </script>
+                        </script>
+                    <?php } ?>
+
+
                 <?php } ?>
-
-
-            <?php } ?>
-            </ul>
+                </ul>
             </div>
         </div>
     </div>
