@@ -37,7 +37,7 @@ session_start();
             <div class="hikes">
                 <?php
                 foreach ($hikes->getHikeByTag($_GET["id"]) as $key => $hike) {
-                    include 'include/hikePerTag.php';
+                    include 'include/hike.php';
                 }
                 ?>
             </div>
