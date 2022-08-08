@@ -30,22 +30,22 @@ session_start();
             <?php endif; ?>
             <ul class="tags">
                 <li>Tags : </span>
-                <?php
-                foreach ($tags->getListTags() as $key => $tag) {
-                ?>
-                    <li>
-                        <a class="tags__link" href="tag?id=<?php echo htmlspecialchars($tag['ID']); ?>">
-                                <?php echo htmlspecialchars($tag['name']); ?>
-                        </a>
-                    </li>
-                <?php
-                }
-                ?>
+                    <?php
+                    foreach ($tags->getListTags() as $key => $tag) {
+                    ?>
+                <li>
+                    <a class="tags__link" href="tag?id=<?php echo htmlspecialchars($tag['ID']); ?>">
+                        <?php echo htmlspecialchars($tag['name']); ?>
+                    </a>
+                </li>
+            <?php
+                    }
+            ?>
             </ul>
             <div class="hikes">
                 <?php
                 foreach ($hikes->getHikes() as $key => $hike) {
-                    include 'include/hike.php'; 
+                    include 'include/hike_homepage.php';
                 }
                 ?>
             </div>

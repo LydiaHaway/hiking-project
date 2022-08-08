@@ -1,6 +1,6 @@
 <div class="hikes__item">
     <div class="row">
-        <div class="col-12 hikes__picture">
+        <div class="col-sm-3 col-12 hikes__picture">
             <?php
             if ($hike["illustration"] != NULL) {
             ?>
@@ -10,7 +10,7 @@
             ?>
             <span class="hikes__date"><?php echo date("d-m-Y", strtotime($hike['date'])); ?></span>
         </div>
-        <div class="col-12 hikes__content">
+        <div class="col-sm-9 col-12 hikes__content">
             <h3 class="hikes__title">
                 <?php echo htmlspecialchars($hike['name']); ?>
             </h3>
@@ -33,10 +33,6 @@
                 Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
             </p>
 
-            <p class="hikes__description">
-                Départ depuis <?php echo htmlspecialchars($hike['description']); ?>
-            </p>
-
             <ul class="hikes__meta">
                 <li class="hikes__meta-value hikes__meta-value--distance">
                     <strong>Distance: </strong><?php echo htmlspecialchars($hike['distance']); ?> km
@@ -49,7 +45,7 @@
                 </li>
             </ul>
             <div class="row hikes__bottom">
-                <div class="col-12">
+                <div class="col-sm-9 col-12">
                     <ul class="tags tags--small">
                         <li>Tags: </li>
                         <?php
@@ -60,30 +56,15 @@
                                     <?php echo htmlspecialchars($tag['name']); ?>
                                 </a>
                             </li>
+                        <?php } ?>
+                    </ul>
                 </div>
-                <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
-                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                        <button>Modifier la randonnée</button>
+                <div class="col-sm-3 col-12 text-right">
+                    <a class="link" href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                        Plus d'info
                     </a>
-                    <a class="button">
-                        <button onclick="deleteHike();">Supprimer la randonnée</button>
-                    </a>
-
-                    <script>
-                        //show a confirmation and redirect to the delete profile script
-                        function deleteHike() {
-                            if (confirm("Voulez vous vraiment supprimer la randonnée ?")) {
-                                location.href = 'deleteHike_Hike?id=<?php echo htmlspecialchars($hike['ID']); ?>';
-                            }
-                        }
-                    </script>
-                <?php } ?>
-
-
-            <?php } ?>
-            </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

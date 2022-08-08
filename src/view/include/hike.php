@@ -22,7 +22,7 @@
                     <?php if ($hike['date'] != $hike['update_hike']) { ?>
                         <span class="hikes__date-upd">
                             <small>- modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></small>
-                    </span>
+                        </span>
                     <?php } ?>
                 </p>
             <?php
@@ -32,7 +32,7 @@
             <p class="hikes__location">
                 Départ depuis <?php echo htmlspecialchars($hike['location']); ?>
             </p>
-            
+
             <ul class="hikes__meta">
                 <li class="hikes__meta-value hikes__meta-value--distance">
                     <strong>Distance: </strong><?php echo htmlspecialchars($hike['distance']); ?> km
@@ -46,7 +46,7 @@
             </ul>
             <div class="row hikes__bottom">
                 <div class="col-sm-9 col-12">
-                    <ul class="tags tags--small"> 
+                    <ul class="tags tags--small">
                         <li>Tags: </li>
                         <?php
                         foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
@@ -58,6 +58,21 @@
                             </li>
                         <?php } ?>
                     </ul>
+                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                        Modifier la randonnée
+                    </a>
+                    <a class="button">
+                        <button onclick="deleteHike();">Supprimer la randonnée</button>
+                    </a>
+
+                    <script>
+                        //show a confirmation and redirect to the delete profile script
+                        function deleteHike() {
+                            if (confirm("Voulez vous vraiment supprimer la randonnée ?")) {
+                                location.href = 'deleteHike_Profil?id=<?php echo htmlspecialchars($hike['ID']); ?>';
+                            }
+                        }
+                    </script>
                 </div>
                 <div class="col-sm-3 col-12 text-right">
                     <a class="link" href="hike?id=<?php echo htmlspecialchars($hike['ID']); ?>">

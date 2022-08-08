@@ -40,58 +40,60 @@ if (isset($_GET['id'])) {
                     </a>
                 </div>
             </div>
-        <?php
-        foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
-        ?>
-            <div class="box">
-                <h2>Informations </h2>
-                <ul>
-                    <li>
-                        Prénom: <?php echo htmlspecialchars($user['firstname']); ?>
-                    </li>
-                    <li>
-                        Nom: <?php echo htmlspecialchars($user['lastname']); ?>
-                    </li>
-                    <li>
-                        Login: <?php echo htmlspecialchars($user['nickname']); ?>
-                    </li>
-                    <li>
-                        Email: <?php echo htmlspecialchars($user['email']); ?>
-                    </li>
-                </ul>
-                <br>
-                <p>
-                    <a class="link" href="/profile_update">
-                            Modifier vos informations
-                    </a>
-                </p>
-            </div>
-        <?php
-        }
-
-        if(count($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) ) > 0) {
-        ?>
-            <h3 class="mb-2">
-                Voici les randonnées que vous avez créées :
-            </h3>
-            <?php if (isset($validMessage)) : ?>
-                <div>
-                    <?php echo $validMessage; ?>
-                </div>
-            <?php endif; ?>
-
             <?php
-            foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
-                include 'include/hike.php'; 
-            }
-        } else {
+            foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
             ?>
-            <p class="alert alert--warning">
-                Aucune randonnée enregistrée
-            </p>
+                <div class="box">
+                    <h2>Informations </h2>
+                    <ul>
+                        <li>
+                            Prénom: <?php echo htmlspecialchars($user['firstname']); ?>
+                        </li>
+                        <li>
+                            Nom: <?php echo htmlspecialchars($user['lastname']); ?>
+                        </li>
+                        <li>
+                            Login: <?php echo htmlspecialchars($user['nickname']); ?>
+                        </li>
+                        <li>
+                            Email: <?php echo htmlspecialchars($user['email']); ?>
+                        </li>
+                    </ul>
+                    <br>
+                    <p>
+                        <a class="link" href="/profile_update">
+                            Modifier vos informations
+                        </a>
+                    </p>
+                </div>
             <?php
-        }
-        ?>
+            }
+
+            if (count($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID'])) > 0) {
+            ?>
+                <h3 class="mb-2">
+                    Voici les randonnées que vous avez créées :
+                </h3>
+                <?php if (isset($validMessage)) : ?>
+                    <div>
+                        <?php echo $validMessage; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php
+                foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
+                    include 'include/hike.php';
+                }
+            } else {
+                ?>
+                <p class="alert alert--warning">
+                    Aucune randonnée enregistrée
+                </p>
+            <?php
+            }
+            ?>
+
+
         </div>
     </main>
     <?php require_once 'include/footer.php'; ?>
