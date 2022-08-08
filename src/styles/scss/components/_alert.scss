@@ -1,0 +1,18 @@
+.alert {
+    background: grey;
+    color : white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+    font-size: 1.5rem;
+
+    &--danger {
+        background-color: rgb(208, 43, 34);
+    }
+    &--succes {
+        background-color: $green;
+    }
+    &--warning {
+        background-color: orange;
+    }
+}

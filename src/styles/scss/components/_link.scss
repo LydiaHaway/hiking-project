@@ -1,0 +1,17 @@
+a {
+    text-decoration: none;
+    color: $link-color;
+    transition: all 0.2s ease-in-out;
+}
+
+.link {
+    color: $text-color;
+    border-bottom: 1px solid $link-color;
+    padding-bottom: 2px;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+        border-bottom-color: transparent;
+    }
+}

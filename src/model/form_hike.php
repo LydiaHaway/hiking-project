@@ -22,19 +22,22 @@ require_once '../model/tags.php';
 <body>
     <?php require '../view/include/header.php' ;?>
 
-<main>
-    <?php if (empty($_POST)) : ?>
-        <?php require_once '../view/addHikes.php'; ?>
-    <?php else : ?>
-        <?php if (isset($_POST["name"], $_POST["distance"], $_POST["duration"], $_POST["elevation_gain"], $_POST["description"], $_POST["location"]) && !empty($_POST["name"]) && !empty($_POST["distance"]) && !empty($_POST["duration"]) && !empty($_POST["elevation_gain"]) && !empty($_POST["description"]) && !empty($_POST["location"])) : ?>
-                <?php $hikes->addHike(); ?>
-                <?php header("Location: profileUser");?>
+    <main>
+        <h1 class="title-page">
+            Ajouter une randonnée
+        </h1>
+        <?php if (empty($_POST)) : ?>
+            <?php require_once '../view/addHikes.php'; ?>
         <?php else : ?>
-            <p>Le formulaire d'inscription doit être rempli avant d'être envoyé !</p>  
-            <?php require_once '../view/addHikes.php';?>
+            <?php if (isset($_POST["name"], $_POST["distance"], $_POST["duration"], $_POST["elevation_gain"], $_POST["description"], $_POST["location"]) && !empty($_POST["name"]) && !empty($_POST["distance"]) && !empty($_POST["duration"]) && !empty($_POST["elevation_gain"]) && !empty($_POST["description"]) && !empty($_POST["location"])) : ?>
+                    <?php $hikes->addHike(); ?>
+                    <?php header("Location: profileUser");?>
+            <?php else : ?>
+                <p>Le formulaire d'inscription doit être rempli avant d'être envoyé !</p>  
+                <?php require_once '../view/addHikes.php';?>
+            <?php endif; ?>
         <?php endif; ?>
-    <?php endif; ?>
-</main>
+    </main>
 
 </body>
 

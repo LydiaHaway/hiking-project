@@ -4,9 +4,7 @@
 
 @import "base/reset";
 @import "base/typography";
-
-@import "components/alert";
-@import "components/buttons";
+@import "base/form";
 
 @import "layout/common";
 @import "layout/header";
@@ -14,8 +12,15 @@
 @import "layout/sidebar";
 @import "layout/nav";
 
+@import "components/alert";
+@import "components/buttons";
+@import "components/hikes";
+@import "components/link";
+@import "components/user-nav";
+@import "components/tags";
+@import "components/form-user";
+
 @import "pages/home";
-@import "pages/hikes";
 @import "pages/user";
 
 @import "themes/dark";

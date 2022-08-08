@@ -1,47 +1,72 @@
-header {
-  display: flex;
-  justify-content: space-between;
-  background-image: url('../img/skyMountain.jpg');
-    object-fit: cover;
-}
+.header {
+  padding : 2rem 0;
+  position: relative;
 
-.logo {
-  width: 13rem;
-  margin-right: 2rem;
-}
+  .row {
+    align-items: center;
+  }
 
-.logo__img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  height: auto;
-  border-radius: 50%;
-  transform: scale(0.8);
-  padding: 1rem;
-  &:hover {
-    filter: drop-shadow(0 0 0.75rem darkgreen);
+  &::before {
+    content: "";
+    height: 100%;
+    width : 100%;
+    background-color: #CBEAFF;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+
+  &::after {
+    content: "";
+    height: 306px;
+    width : 100%;
+    background: url(../img/clouds.png) no-repeat;
+    background-size : 3600px 306px;
+    animation: cloud-in-out 60s linear infinite;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  @media all and (max-width: 767px) {
+    &::after {
+      height: 204px;
+      background-size : 2400px 204px;
+      animation: cloud-in-out-mobile 60s linear infinite;
+    }
   }
 }
 
-li {
-  @include medium-typo;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 2rem;
-  color: rgb(137, 81, 38);
-  background-color: white;
-  text-transform: capitalize;
-  
-}
+.header__link {
+  display: inline-flex;
+  align-items: center;
+  color: $text-color;
+  font-weight: 500;
 
-nav {
-  li {
-    margin: 7rem;
+  img {
+    margin-right: 1rem;
   }
 }
 
-div.tags {
-  float: left;
-  list-style-type: none;
+.header__logo {
+  text-align: center;
+}
+
+@keyframes cloud-in-out {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -3600px 0;
+  }
+}
+@keyframes cloud-in-out-mobile {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2400px 0;
+  }
 }

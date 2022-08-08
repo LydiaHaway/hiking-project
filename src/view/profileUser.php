@@ -25,132 +25,74 @@ if (isset($_GET['id'])) {
 
 <body>
     <?php require 'include/header.php' ?>
-    <br>
-    <h1>
-        Bienvenue <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> sur votre profil !
-    </h1>
-    <br>
-    <?php
-    foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
-    ?>
-        <h2>Informations : </h2>
-        <p>
-            Prénom: <?php echo htmlspecialchars($user['firstname']); ?>
-        </p>
-
-        <p>
-            Nom: <?php echo htmlspecialchars($user['lastname']); ?>
-        </p>
-
-        <p>
-            Login: <?php echo htmlspecialchars($user['nickname']); ?>
-        </p>
-
-        <p>
-            Email: <?php echo htmlspecialchars($user['email']); ?>
-        </p>
-
-        <a href="/profile_update">
-            <button>
-                Modifier vos informations
-            </button>
-        </a>
-
-        <br>
-        <br>
-
-    <?php
-    }
-    ?>
-
-
-
-    <a class="button" href="form_hike">
-        <button>Ajouter une randonnée</button>
-    </a>
-
-
-    <p>
-        Voici les randonnées que vous avez créées :
-    </p>
-    <?php if (isset($validMessage)) : ?>
-        <div>
-            <?php echo $validMessage; ?>
-        </div>
-    <?php endif; ?>
-
-    <?php
-    foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
-    ?>
-            <div class="hikes">
-
-                <?php
-
-                if ($hike["illustration"] != NULL) {
-                ?>
-                    <img class="image-hike" src="<?php echo htmlspecialchars($hike['illustration']); ?>" alt="illustration" />
-                <?php
-                }
-                ?>
-
-                <h1>
-                    <?php echo htmlspecialchars($hike['name']); ?>
-                </h1>
-                <p class="date">
-                    <em>Ajouté le <?php echo date("d-m-Y", strtotime($hike['date'])); ?></em>
-                </p>
-
-                <?php if ($hike['date'] != $hike['update_hike']) { ?>
-
-                    <p class="date">
-                        <em>Modifié le <?php echo date("d-m-Y", strtotime($hike['update_hike'])); ?></em>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-12">
+                    <h1>Mon compte</h1>
+                    <p>
+                        Bienvenue <?php echo $_SESSION['LOGGED_USER']['firstname']; ?> sur votre profil !
                     </p>
-
-                <?php } ?>
-
-                <p class="info">
-                    Distance: <?php echo htmlspecialchars($hike['distance']); ?> km, dénivelé positif: <?php echo htmlspecialchars($hike['elevation_gain']); ?> m,
-                    durée moyenne: <?php echo htmlspecialchars($hike['duration']); ?>h
-                </p>
-
-                <p class="description">
-                    <?php echo htmlspecialchars($hike['description']); ?>
-                </p>
-
-                <p class="location">
-                    Départ depuis <?php echo htmlspecialchars($hike['location']); ?>.
-                </p>
-
-                <?php
-                foreach ($tags->getTag($hike['ID_tags']) as $key => $tag) {
-                ?>
-
-                    <p class="tags"> Tags: <?php echo htmlspecialchars($tag['name']); ?>
-                    </p>
-
-                <?php
-                }
-                ?>
-
-                <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                    Modifier la randonnée
-                </a>
-                <a class="button">
-                        <button onclick="deleteHike();">Supprimer la randonnée</button>
+                </div>
+                <div class="col-md-3 col-12 text-right">
+                    <a class="btn" href="form_hike">
+                        + Ajouter une randonnée
                     </a>
-
-                    <script>
-                    //show a confirmation and redirect to the delete profile script
-                        function deleteHike() {
-                            if (confirm("Voulez vous vraiment supprimer la randonnée ?")) {
-                                location.href = 'deleteHike_Profil?id=<?php echo htmlspecialchars($hike['ID']); ?>';
-                            }
-                        }
-                    </script>
+                </div>
             </div>
-    <?php
-    }
-    ?>
+        <?php
+        foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
+        ?>
+            <div class="box">
+                <h2>Informations </h2>
+                <ul>
+                    <li>
+                        Prénom: <?php echo htmlspecialchars($user['firstname']); ?>
+                    </li>
+                    <li>
+                        Nom: <?php echo htmlspecialchars($user['lastname']); ?>
+                    </li>
+                    <li>
+                        Login: <?php echo htmlspecialchars($user['nickname']); ?>
+                    </li>
+                    <li>
+                        Email: <?php echo htmlspecialchars($user['email']); ?>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    <a class="link" href="/profile_update">
+                            Modifier vos informations
+                    </a>
+                </p>
+            </div>
+        <?php
+        }
+
+        if(count($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) ) > 0) {
+        ?>
+            <h3 class="mb-2">
+                Voici les randonnées que vous avez créées :
+            </h3>
+            <?php if (isset($validMessage)) : ?>
+                <div>
+                    <?php echo $validMessage; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php
+            foreach ($hikes->getHikeByUser($_SESSION['LOGGED_USER']['ID']) as $key => $hike) {
+                include 'include/hike.php'; 
+            }
+        } else {
+            ?>
+            <p class="alert alert--warning">
+                Aucune randonnée enregistrée
+            </p>
+            <?php
+        }
+        ?>
+        </div>
     </main>
     <?php require_once 'include/footer.php'; ?>
 </body>

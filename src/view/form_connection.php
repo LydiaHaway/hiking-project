@@ -41,42 +41,38 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
 
 <body>
     <?php require 'include/header.php' ?>
-
     <main>
-        <h1>Connectez vous !</h1>
-<!--
-   Si utilisateur/trice est non identifié(e), on affiche le formulaire
--->
-    <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
-        <form action="form_connection" method="POST">
-            <!-- si message d'erreur on l'affiche -->
-            <?php if (isset($errorMessage)) : ?>
-                <p>
-                    <?php echo $errorMessage; ?>
-                    <a href="form_inscription">Inscrivez vous !</a>
+        <h1 class="title-page">Connectez vous !</h1>
+        <!--
+        Si utilisateur/trice est non identifié(e), on affiche le formulaire
+        -->
+        <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
+            <form class="form-user" action="form_connection" method="POST">
+                <!-- si message d'erreur on l'affiche -->
+                <?php if (isset($errorMessage)) : ?>
+                    <p class="form-row">
+                        <?php echo $errorMessage; ?>
+                        <a href="form_inscription">Inscrivez vous !</a>
+                    </p>
+                <?php endif; ?>
+                <p class="form-row">
+                    <label for="email">Email </label>
+                    <input type="email" name="email">
                 </p>
-            <?php endif; ?>
-            <div>
-                <label for="email">Email </label>
-                <input type="email" name="email">
-            </div>
 
-            <div>
-                <label for="password">Mot de passe </label>
-                <input type="password" name="password">
-            </div>
+                <p class="form-row">
+                    <label for="password">Mot de passe </label>
+                    <input type="password" name="password">
+                </p>
 
-            <br>
-
-            <button type="submit">Se connecter</button>
-        </form>
-<!-- 
-Si utilisateur/trice bien connectée on affiche un message de succès
--->
-    <?php else : ?>
-        <?php header("Location: home"); ?>
-
-    <?php endif; ?>
+                <button type="submit">Se connecter</button>
+            </form>
+        <!-- 
+        Si utilisateur/trice bien connectée on affiche un message de succès
+        -->
+        <?php else : ?>
+            <?php header("Location: home"); ?>
+        <?php endif; ?>
     </main>
 
 </body>

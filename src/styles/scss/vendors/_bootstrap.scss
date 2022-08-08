@@ -138,3 +138,37 @@ $desktop: 1140px;
     display: none !important;
   }
 }
+
+
+@for $i from 1 through 10 {
+  .mt-#{$i} {
+    margin-top: #{$i}rem;
+  }
+}
+
+@for $i from 1 through 10 {
+  .mr-#{$i} {
+    margin-right: #{$i}rem;
+  }
+}
+
+@for $i from 1 through 10 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+}
+
+@for $i from 1 through 10 {
+  .ml-#{$i} {
+    margin-left: #{$i}rem;
+  }
+}
+
+.align-center {
+  align-items: center;
+}
+
+
+.space-between {
+  justify-content: space-between;
+}

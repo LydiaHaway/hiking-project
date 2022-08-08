@@ -35,55 +35,42 @@ if (!empty($_POST)) {
 <body>
     <?php require 'include/header.php' ?>
 
-
-    <?php
-    foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
-    ?>
-
-        <main>
-            <form method="POST" action="profile_update">
-
-                <div>
+    <main>
+        <div class="container">
+            <h1 class="title-page">
+                Modifier mes informations
+            </h1>
+            <?php
+            foreach ($users->getUser($_SESSION['LOGGED_USER']['ID']) as $key => $user) {
+            ?>
+            <form method="POST" action="profile_update" class="form-user">
+                <div class="form-row">
                     <label for="firstname">Prénom </label>
                     <input type="text" name="firstname" value="<?php echo htmlspecialchars($user['firstname']); ?>">
                 </div>
-
-                <div>
+                <div class="form-row">
                     <label for="lastname">Nom </label>
                     <input type="text" name="lastname" value="<?php echo htmlspecialchars($user['lastname']); ?>">
                 </div>
-
-                <div>
+                <div class="form-row">
                     <label for="nickname">Login </label>
                     <input type="text" name="nickname" value="<?php echo htmlspecialchars($user['nickname']); ?>">
                 </div>
-
-                <div>
+                <div class="form-row">
                     <label for="email">Email </label>
                     <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>">
                 </div>
-
-                <div>
+                <div class="form-row">
                     <label for="password">Mot de passe </label>
                     <input type="password" name="password">
                 </div>
-
                 <input type="hidden" name="ID" value="<?php echo htmlspecialchars($user['ID']); ?>">
-
-                <br>
-
                 <button type="submit">Modifier</button>
-
-
             </form>
-        </main>
-
-    <?php
-    }
-    ?>
-
-
-
+            <?php
+            }
+            ?>
+        </div>
+    </main>
 </body>
-
 </html>
