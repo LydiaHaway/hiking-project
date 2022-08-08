@@ -57,7 +57,6 @@
                                 </a>
                             </li>
                         <?php } ?>
-
                         <a class="tags__link" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                             Modifier la randonnée
                         </a>
