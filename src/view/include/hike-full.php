@@ -63,12 +63,12 @@
                 </div>
                 <?php if ($_SESSION['LOGGED_USER']['is_admin'] == "1") { ?>
                     <li>
-                        <a class="tags__link" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                            <button>Modifier la randonnée</button>
+                        <a href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                            <button class="tags__link">Modifier la randonnée</button>
                         </a>
                     </li>
                     <li>
-                        <a class="tags__link">
+                        <a>
                             <button class="tags__link" onclick="deleteHike();">Supprimer la randonnée</button>
                         </a>
 

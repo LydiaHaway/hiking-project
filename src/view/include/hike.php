@@ -61,7 +61,7 @@
                         <a class="tags__link" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
                             Modifier la randonnée
                         </a>
-                        <a class="tags__link">
+                        <a>
                             <button class="tags__link" onclick="deleteHike();">Supprimer la randonnée</button>
                         </a>
                     </ul>

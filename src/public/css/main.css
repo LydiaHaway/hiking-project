@@ -582,6 +582,10 @@ a {
   background: #739ebe;
 }
 
+li {
+  list-style: none;
+}
+
 .tags {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -601,7 +605,7 @@ a {
   border-radius: 30px;
   padding: 1rem 2rem;
   min-width: 100px;
-  border: 1px solid #E3E3E3;
+  border: 1px solid #e3e3e3;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -612,6 +616,8 @@ a {
   color: #1E1E1E;
   text-transform: uppercase;
   font-size: 1.4rem;
+  font-weight: 400;
+  cursor: pointer;
 }
 .tags__link:hover {
   background: #739ebe;
