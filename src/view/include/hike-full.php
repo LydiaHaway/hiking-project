@@ -69,7 +69,7 @@
                     </li>
                     <li>
                         <a class="tags__link">
-                            <button onclick="deleteHike();">Supprimer la randonnée</button>
+                            <button class="tags__link" onclick="deleteHike();">Supprimer la randonnée</button>
                         </a>
 
                         <script>

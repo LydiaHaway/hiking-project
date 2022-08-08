@@ -57,14 +57,14 @@
                                 </a>
                             </li>
                         <?php } ?>
-                    </ul>
-                    <a class="button" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
-                        Modifier la randonnée
-                    </a>
-                    <a class="button">
-                        <button onclick="deleteHike();">Supprimer la randonnée</button>
-                    </a>
 
+                        <a class="tags__link" href="form_update?id=<?php echo htmlspecialchars($hike['ID']); ?>">
+                            Modifier la randonnée
+                        </a>
+                        <a class="tags__link">
+                            <button class="tags__link" onclick="deleteHike();">Supprimer la randonnée</button>
+                        </a>
+                    </ul>
                     <script>
                         //show a confirmation and redirect to the delete profile script
                         function deleteHike() {
