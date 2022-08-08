@@ -6,4 +6,4 @@
 
 ## Technologies
 
-PHP, HTML, SASS, JS
+PHP, HTML, SASS
